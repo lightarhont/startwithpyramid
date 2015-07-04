@@ -1,0 +1,122 @@
+<form id="editform" class="nice validate">
+				<div class="row editsavemenu">
+					<div class="eight columns">
+						<div class="opheader">
+							<h5>Редактировать</h5>
+						</div>
+						<div class="opstatus"></div>
+					</div>
+					<div class="four columns">
+						<div class="gh_button-group">
+							<a href="javascript: void(0);" id="saveitem" class="gh_button primary pill">Сохранить</a>
+							<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Заголовок:</label>
+										  <input type="text" id="setposttitle" name="setposttitle" value="{{=it.title}}" class="input-text large" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Заголовок поста блога">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Псевдоним:</label>
+										  <input type="text" id="setalias" name="setalias" value="{{=it.alias}}" class="input-text large" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Псевдоним, используется как основная часть URL.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Пользователь:</label>
+										  <select id="setuser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+																{{=it.htmlallusers}}
+            </select>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Уникальное имя пользователя автора поста.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+         
+         <div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="intro">Вступление:</label>
+										  <textarea name="into">{{=it.into}}</textarea>
+										</div>
+									</div>
+									</div>
+									
+         <div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="content">Содержимое:</label>
+										  <textarea name="content">{{=it.content}}</textarea>
+										</div>
+									</div>
+									</div> 
+         
+								</div>
+        
+							 <div class="four columns">
+									<label class="sepH_b">Список тэгов:</label>
+											<select id="settags" data-placeholder="Список доступных тэгов" style="width:300px;" class="chzn-select" multiple tabindex="6">
+												{{=it.htmltags}}
+											</select>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="published" class="iRadio_btn"{{=it.checkbox1}}/>
+												<small>Публикация</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="comments" class="iRadio_btn"{{=it.checkbox2}}/>
+												<small>Комментарии</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="comments_premoderation" class="iRadio_btn"{{=it.checkbox3}}/>
+												<small>Премодерация комментариев</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="{{=it.id}}" />
+</form>

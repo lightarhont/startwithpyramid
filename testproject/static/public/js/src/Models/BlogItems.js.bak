@@ -1,0 +1,9 @@
+define(function(){
+    
+Project.Classes.Models.BlogItems = Backbone.Model.extend({
+    defaults: {}
+});
+    
+return Project;
+
+});

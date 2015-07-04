@@ -1,0 +1,8 @@
+<ul class="pagination">
+    <li><a onclick="pages('1');" href="javascript: void(0);">Начало</a></li> 
+    <tal:block repeat="page pagination.pages">
+        <li class="current" tal:condition="python: pagination.current == page"><a href="javascript: void(0);">${page}</a></li>
+        <li><a tal:condition="python: pagination.current != page" onclick="pages('${page}');" href="javascript: void(0);">${page}</a></li>
+    </tal:block>
+    <li><a onclick="pages('${pagination.page_num}');" href="javascript: void(0);">Конец</a></li>
+</ul>

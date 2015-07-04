@@ -1,0 +1,32 @@
+  <script type="text/template" id="userlogin">
+   <form class="loginform" style="width: 390px; float: left;">
+                  <fieldset>
+                   <legend>Авторизация</legend>
+                   <div class="row collapse prefix-radius username">
+                            <div class="small-4 medium-5 large-5 columns">
+                                <label data-tooltip class="prefix has-tip">Логин</label>
+                            </div>
+                            <div class="small-8 medium-7 large-7 columns">
+                                <input type="text" id="username">
+                            </div>
+                   </div>
+                   <div class="row collapse prefix-radius username">
+                            <div class="small-4 medium-5 large-5  columns">
+                                <label data-tooltip class="prefix has-tip">Пароль</label>
+                            </div>
+                            <div class="small-8 medium-7 large-7 columns">
+                                <input type="password" id="password">
+                            </div>
+                   </div>
+                   <div class="row">
+                    <a style="float: right; margin-right: 30px;" class="more">Войти</a>
+                   </div>
+                  </fieldset>
+                 </form>
+                 <div style="float: right; width: 200px; margin-top: 190px;">
+                  <ul>
+                   <li><a onclick="return link('/registration');" href="/#!registration">Регистрация</a></li>
+                   <li><a onclick="return link('/rememberpassword');" href="/#!rememberpassword">Восстановить пароль</a></li>
+                  </ul>
+                 </div>
+  </script>

@@ -1,0 +1,36 @@
+var cmfilter = (function()
+              {
+                $('#tablesearch').click(function(){
+                       lke = $("#selecttablesearch :selected").val();
+                       phr = $("#fieldtablesearch").val();
+                       if(phr != '' && lke != 'none')
+                       {
+                        sort.phr = phr;
+                        sort.lke = lke;
+                        search = 1;
+                        
+                        url = preurl + 'searchcount';
+                        
+                        post = {'phr': sort.phr, 'lke': sort.lke};
+                        
+                        $('#loader1').show();
+                        
+                        $.ajax({
+                             "async": false,
+                             "url": url,
+                             "type": "POST",
+                             "data": post,
+                             "success": function(data)
+                             {
+                              paging.setNumber(data);
+                              number = data
+                              cmtotalpages();
+                              paging.setOptions({refresh: {'url': undefined}});
+                              paging.setPage();
+                              $('#loader1').hide();
+                             }
+                        });
+                       }
+                      });
+              }
+             );

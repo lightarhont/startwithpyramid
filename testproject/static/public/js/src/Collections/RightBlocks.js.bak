@@ -1,0 +1,18 @@
+define(['../Models/RightBlocks'], function(){
+
+Project.Classes.Collections.Tags = Backbone.Collection.extend({
+    model: Project.Classes.Models.Tag,
+    url: function(){
+        return pfx+'blogs/alltags';
+    },
+});
+
+Project.Classes.Collections.Populars = Backbone.Collection.extend({
+    model: Project.Classes.Models.Popular,
+    url: function(){
+        return pfx+'blogs/populars';
+    },
+});
+
+return Project;
+});

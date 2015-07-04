@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>${title}</title>
+
+        ${structure: csslibs}
+    
+        ${structure: favicons}
+
+	<base href="${stpath + 'manager/'}">
+	<script>
+		${structure: jsglobal}
+	</script>
+	</head>
+	<body class="ptrn_a grdnt_a mhover_a">
+		<header>
+			<div class="container head_s_a">
+				<div class="row sepH_b">
+					<div class="six columns">
+						<div class="row">
+							<div style="padding-top: 28px;">
+								<div id="logo">
+									<h4 style="color: darkred;">${projecttitle}::CONTROL PANEL</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="six columns">
+						<div class="user_box cf">
+							<div class="user_avatar">
+								<img src="${stpath + 'manager/img/user_male.png'}" alt="" />
+							</div>
+							<div class="user_info user_sep">
+								<p class="sepH_a">
+									<strong>${my.fullname}</strong>
+								</p>
+								<span>
+									<a href="#" class="sep">Настройки</a>
+									<a href="/logout">Выход</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="twelve columns">
+						<nav id="smoothmenu_h" class="ddsmoothmenu">
+							<ul class="cf">
+								${structure: mainmenu}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- notifications content -->
+			<div style="display:none">
+				<div id="ntf_tickets_panel" style="display:none">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</div>
+				<div id="ntf_comments_panel" style="display:none">
+					Lorem ipsum dolor sit amet, consectetur adipiscing.
+				</div>
+				<div id="ntf_mail_panel" style="display:none">
+					Lorem ipsum dolor sit amet, consectetur.
+				</div>
+			</div>
+		</header>
+  <div metal:define-slot="content"></div>
+		<footer class="container" id="footer">
+			<div class="row">
+				<div class="twelve columns">
+                    Copyright &copy; 2012 tzd-themes.com
+				</div>
+			</div>
+		</footer>
+		<div class="sw_width">
+			<img class="sw_full" title="switch to full width" alt="" src="${stpath + 'manager/img/blank.gif'}" />
+			<img style="display:none" class="sw_fixed" title="switch to fixed width (980px)" alt="" src="${stpath + 'manager/img/blank.gif'}" />
+		</div>
+
+  ${structure: jslibs}
+
+		<script>
+			
+			$(document).ready(function() {
+    //* common functions
+    prth_common.init();
+    
+    ${structure: jsopts}
+    
+			});
+		</script>
+	</body>
+</html>

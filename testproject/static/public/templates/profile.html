@@ -1,0 +1,86 @@
+<script type="text/template" id="profileprofile">
+   <div class="row">
+    <form class="changepasswordform" style="width: 390px; display: block; margin-left: auto; margin-right: auto;">
+    <fieldset>
+     <legend>Изменение профиля</legend>
+     <div class="row collapse prefix-radius fullname">
+     <div class="small-5 medium-5 large-5  columns">
+      <label data-tooltip class="prefix has-tip">Полное имя</label>
+     </div>
+     <div class="small-7 medium-7 large-7 columns">
+      <input type="text" value="<%= fullname %>">
+     </div>
+     </div>
+     <div class="row">
+      <a style="float: right; margin-right: 30px;" class="more">Изменить профиль</a>
+     </div>
+    </fieldset>
+    </form>
+   </div>
+  </script>
+  
+  <script type="text/template" id="profilepassword">
+   <div class="row">
+    <form class="changepasswordform" style="width: 390px; display: block; margin-left: auto; margin-right: auto;">
+    <fieldset>
+     <legend>Изменение пароля</legend>
+    <div class="row collapse prefix-radius oldpassword">
+     <div class="small-5 medium-5 large-5  columns">
+      <label data-tooltip class="prefix has-tip">Старый пароль</label>
+     </div>
+     <div class="small-7 medium-7 large-7 columns">
+      <input type="password">
+     </div>
+    </div>
+    <div class="row collapse prefix-radius password">
+     <div class="small-5 medium-5 large-5  columns">
+      <label data-tooltip class="prefix has-tip">Пароль</label>
+     </div>
+     <div class="small-7 medium-7 large-7 columns">
+      <input type="password">
+     </div>
+    </div>
+    <div class="row collapse validate passworderror">
+     <div></div>
+    </div>
+    <div class="row collapse prefix-radius confirmpassword">
+     <div class="small-5 medium-5 large-5  columns">
+      <label data-tooltip class="prefix has-tip">Повторить Пароль</label>
+     </div>
+     <div class="small-7 medium-7 large-7 columns">
+      <input type="password">
+     </div>
+    </div>
+    <div class="row">
+     <a style="float: right; margin-right: 30px;" class="more">Изменить пароль</a>
+    </div>
+    </fieldset>
+    </form>
+   </div>
+  </script>
+  
+  <script type="text/template" id="profileavatar">
+   <div class="row">
+    <div class="firstavatar">
+     <a href="/<%= avatar3 %>"><img src="/<%= avatar3 %>" /></a>
+    </div>
+   </div>
+   <div class="row">
+    <div class="secondavatar">
+     <img src="/<%= avatar2 %>" />
+    </div>
+   </div>
+   <div class="row">
+    <div class="thirdavatar">
+     <img src="/<%= avatar1 %>" />
+    </div>
+   </div>
+   <div class="row">
+    <div class="hiddenloader">
+     <a class="more" href="/ajaxuploadimg/index/cmauiimport/avatar/1/300/300">Загрузить аватар</a>
+    </div>
+    <div class="saveavatar">
+     <a class="more" href="javascript:void(0);">Сохранить аватар</a>
+    </div>
+   </div>
+  </script>

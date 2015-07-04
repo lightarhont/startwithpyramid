@@ -1,0 +1,154 @@
+<html metal:use-macro="load: common/html/manager.pt">
+
+<div class="contentimport" metal:fill-slot="content">
+																												
+ <div class="container hide_sortable" id="sortable_panels">
+			<div class="row sepH_c"><div class="four columns centered tac"><a href="#" class="button reset_layout radius">Reset layout</a></div></div>
+			<div class="row">
+				<div class="six columns sortable" id="sortable1">
+					<div class="box_c" id="box_s01">
+						<div class="box_c_heading cf box_actions">
+							<div class="box_c_ico"><img src="${stpath + 'manager/img/ico/icSw2/16-Books.png'}" alt="" /></div>
+							<p>Chart</p>
+						</div>
+						<div class="box_c_content sw_resizedEL">
+							<div id="pl_plot1" style="height:220px;margin:0 auto" class="chart_flw" title="Bar chart"></div>
+						</div>
+					</div>
+					<div class="box_c" id="box_s02">
+						<div class="box_c_heading cf box_actions">
+							<div class="box_c_ico"><img src="${stpath + 'manager/img/ico/icSw2/16-Books.png'}" alt="" /></div>
+							<p>Content</p>
+						</div>
+						<div class="box_c_content" id="nestedAcc">
+							<ul id="acc" class="accordion">
+								<li>
+									<h4>Heading 1</h4>
+									<div class="inner">
+										<ul>
+											<li>
+												<h5>Heading a</h5>
+												<div class="outer">
+													<div class="inner shown">
+														<p>
+														1a. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+														ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+														laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+														voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+														non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+														</p>
+													</div>
+												</div>
+											</li>
+											<li>
+												<h5>Heading b</h5>
+												<div class="outer">
+													<div class="inner">
+														<p>
+														1b. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+														ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+														laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+														voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+														non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+														</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<h4>Heading 2</h4>
+									<div class="inner">
+										<ul>
+											<li>
+												<h5>Heading a</h5>
+												<div class="outer">
+													<div class="inner">
+													<p>
+														2a. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+														ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+														laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+														voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+														non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+													</p>
+													</div>
+												</div>
+											</li>
+											<li>
+												<h5>Heading b</h5>
+												<div class="outer">
+													<div class="inner">
+														<p>
+															2b. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+															ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+															laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+															voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+															non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+														</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="six columns sortable" id="sortable2">
+					<div class="box_c" id="box_s03">
+						<div class="box_c_heading cf box_actions">
+							<div class="box_c_ico"><img src="${stpath + 'manager/img/ico/icSw2/16-Abacus.png'}" alt="" /></div>
+							<p>Statistics</p>
+						</div>
+						<div class="box_c_content">
+							<p class="inner_heading sepH_c">Latest info</p>
+							<ul class="overview_list">
+								<li>
+									<a href="#">
+										<img src="${stpath + 'manager/img/blank.gif'}" style="background-image: url(img/ico/open/dollar.png)" alt="" />
+										<span class="ov_nb">$10201</span>
+										<span class="ov_text">Total sale</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="${stpath + 'manager/img/blank.gif'}" style="background-image: url(img/ico/open/tag.png)" alt="" />
+										<span class="ov_nb">$231</span>
+										<span class="ov_text">Today sale</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="${stpath + 'manager/img/blank.gif'}" style="background-image: url(img/ico/open/happy-face.png)" alt="" />
+										<span class="ov_nb">32</span>
+										<span class="ov_text">New registrations</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="${stpath + 'manager/img/blank.gif'}" style="background-image: url(img/ico/open/bar-chart.png)" alt="" />
+										<span class="ov_nb">3021</span>
+										<span class="ov_text">Unique visitors</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="box_c" id="box_s04">
+						<div class="box_c_heading cf box_actions">
+							<div class="box_c_ico"><img src="${stpath + 'manager/img/ico/icSw2/16-Abacus.png'}" alt="" /></div>
+							<p>Chart</p>
+						</div>
+						<div class="box_c_content sw_resizedEL">
+							<div id="pl_plot3" style="height:220px;margin:0 auto" class="chart_flw" title="Pie chart"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</div>
+																												
+</html>

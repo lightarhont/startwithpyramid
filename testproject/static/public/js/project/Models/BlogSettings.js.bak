@@ -1,0 +1,13 @@
+define(function(){
+
+Project.Classes.Models.BlogSettings = Backbone.Model.extend({
+    
+    defaults: {
+        thread: 'blog',
+    },
+    
+    });
+
+    return Project;
+
+});

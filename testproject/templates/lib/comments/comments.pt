@@ -1,0 +1,43 @@
+<div class="row" id="allcomments">
+
+    <div class="row">
+    <div tal:define="paginationslot load: testproject:templates/lib/pagination/pagination.pt" metal:use-macro="paginationslot">
+    </div>
+    </div>
+
+    <div class="row panel radius comment" tal:repeat="comment comments">
+            <div class="row info">
+                <div class="itemid"><a href="#">#${comment.id}</a></div>
+                <div class="username"><a id="uc${comment.id}" href="javascript: void(0);">${comment.users.username}</a></div>
+                <div id="dc${comment.id}" class="datetime">
+                   ${comment.datefromtimestamp('%Y-%m-%d %H:%M:%S')}
+                </div>
+                <tal:block condition="python: (my != None) and (4 in my['roles'])">
+                    <tal:block condition="python: comment.userid == my.id">
+                        <div class="option1"><a href="javascript: void(0);" onclick="citeauthor(${comment.id});">Цитировать</a></div>
+                        <div class="option2"><a href="javascript: void(0);" onclick="editcomment(${comment.id});">Редактировать</a></div>
+                        <div class="option3"><a href="javascript: void(0);" onclick="deletecommentconfirm(${comment.id});">Удалить</a></div>
+                    </tal:block>
+                    <tal:block condition="python: comment.userid != my.id">
+                        <div class="option1"><a href="javascript: void(0);" onclick="citeauthor(${comment.id});">Цитировать</a></div>
+                    </tal:block>
+                </tal:block>
+            </div>
+            
+            <tal:block condition="python: useavatars == '1'">
+                <div class="partinfo">
+                    <img src="${stpath}users/${comment.userid}/avatars/${comment.users.profiles.avatar3}" />
+                </div>
+                <div class="partdata">
+                    <div class="titlecomment" id="tc${comment.id}">${comment.title}</div>
+                    <div class="bodycomment" id="bc${comment.id}">${structure: comment.content}</div>
+                </div>
+            </tal:block>
+            <tal:block condition="python: useavatars != '1'">
+                <div class="titlecomment" id="tc${comment.id}">${comment.title}</div>
+                <div class="bodycomment" id="bc${comment.id}">${comment.content}</div>
+            </tal:block>
+            
+    </div>
+
+</div>

@@ -1,0 +1,218 @@
+<html metal:use-macro="load: common/html/manager.pt">
+
+<div class="contentimport" metal:fill-slot="content">
+    
+ <div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Данные</p>
+					</div>
+					<div class="box_c_content">
+						<div class="row">
+							<div class="eight columns">
+								<form class="nice custom">
+								<div style="float: left;">
+								 <select id="selecttablesearch" name="nice_select">
+											<option value="none"> --- Поле для поиска --- </option>
+											<option value="busers.username">userblocked</option>
+											<option value="Permissions.permname">permissionblock</option>
+           <option value="fusers.username">fromuser</option>
+								 </select>
+								</div>
+								
+								<div style="float: left; margin-top: 2px; margin-left: 10px;">
+								 <input type="text" id="fieldtablesearch" name="nice_text_small" class="input-text small" />
+								</div>
+								<div style="float: left; margin-top: 3px; margin-left: 10px;">
+									
+								 <div class="gh_button-group">
+								  <a href="javascript: void(0);" id="tablesearch" class="gh_button primary pill">Отобрать</a>
+								  <a href="javascript: void(0);" id="tablesearchclear" class="gh_button pill">Сбросить</a>
+         </div>
+								</div>
+								</form>
+							</div>
+							<div class="four columns">
+							 <div class="gh_button-group">
+								 <a href="javascript: void(0);" id="tadditem" class="gh_button primary pill">Добавить</a>
+								 <a href="javascript: void(0);" id="tedititem" class="gh_button pill">Редактировать</a>
+								 <a href="javascript: void(0);" id="tdeleteitem" class="gh_button pill">Удалить</a>
+        </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="twelve columns">
+								<!--<div id="loader1"><img src="img/loader.gif" /></div>-->
+								<table id="cdt" cellspacing="0" width="100%">
+									<thead>
+          <tr>
+           <th><input id="select-all" type="checkbox" /></th>
+											<th><!--id-->ид</th>
+           <th><!--user_name-->Блокируемый</th>
+											<th><!--permission_name-->Правило</th>
+											<th><!--fromuser_name-->Бан от</th>
+											<th><!--datestart-->Дата начала</th>
+           <th><!--dateend-->Дата конца</th>
+          </tr>
+        </thead>
+									<tbody>
+            <tal:block repeat="block result.blocks">
+                <tr>
+                    <td><input id="item-${block[0].id}" class="itemcheck" type="checkbox" /></td>
+                    <td tal:content="block[0].id"></td>
+                    <td tal:content="block[1].username"></td>
+                    <td tal:content="block[2].permname"></td>
+                    <td tal:content="block[3].username"></td>
+                    <td tal:attributes="class block[0].datefromtimestamp1()[0]"  tal:content="block[0].datefromtimestamp1()[1]"></td>
+                    <td tal:attributes="class block[0].datefromtimestamp2()[0]" tal:content="block[0].datefromtimestamp2()[1]"></td>
+                </tr>
+            </tal:block>
+									</tbody>
+									<tfoot>
+										<tr>
+           <th></th>
+											<th><!--id-->ид</th>
+           <th><!--user_name-->Блокируемый</th>
+											<th><!--permission_name-->Правило</th>
+											<th><!--fromuser_name-->Бан от</th>
+											<th><!--datestart-->Дата начала</th>
+           <th><!--dateend-->Дата конца</th>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="pages"><div id="pagination"></div><div id="totalpages"></div></div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+	</div>
+ 
+ 	<div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Функции</p>
+					</div>
+					<div class="box_c_content">
+						<div id="tablefunc" class="row">
+							
+							<form id="newform" class="nice validate">
+								<div class="row editsavemenu">
+									<div class="eight columns">
+										<div class="opheader"><h5>Новое</h5></div><div class="opstatus"></div>
+									</div>
+									<div class="four columns">
+										<div class="gh_button-group">
+											<a href="javascript: void(0);" id="newitem" class="gh_button primary pill">Сохранить</a>
+											<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Имя блокируемого пользователя:</label>
+										  <select id="setblockeduser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+                <tal:block repeat="user result.excusers">
+                    <option tal:attributes="value user.id" tal:content="user.username"></option>
+                </tal:block>
+            </select>
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Уникальное имя блокируемого пользователя.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Имя правила для блокировки:</label>
+										  <select id="setruleblock" data-placeholder="Выберите право для блокироки&hellip;" class="chzn-select" style="width:250px;">
+                <tal:block repeat="permission result.permissions">
+                    <option tal:attributes="value permission.id" tal:content="permission.permname"></option>
+                </tal:block>
+            </select>
+											</div>
+											<div class="ttipform" style="margin-left: 10px;">
+												<span class="ttip_r" title="Правило для блокировки.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Бан от пользователя:</label>
+										  <select id="setfromuser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+                <tal:block repeat="user result.users">
+                    <option tal:attributes="value user.id" tal:content="user.username"></option>
+                </tal:block>
+            </select>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Уникальное имя пользователя который создал блокировку.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Дата и время начала блокироки:</label>
+										 <input id="setdatestart" name="setdatestart" type="text" class="input-text small datetime">
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Дата и время начала блокировки.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Дата и время конца блокироки:</label>
+										 <input id="setdateend" name="setdateend" type="text" class="input-text small datetime">
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Дата и время конца блокировки.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+         <div class="formRow elVal textareasize">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Комментарий к блокироке:</label>
+										 <textarea id="setblockcomment" cols="1" rows="3" class="expand"></textarea>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Комментарий к блокироке не более 255 символов.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									
+								</div>
+							 <div class="four columns">
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="0" />
+							</form>
+							
+						</div>
+					</div>
+				</div>
+	</div>
+    
+</div>
+																												
+</html>

@@ -1,0 +1,40 @@
+define(function(){
+
+Project.Classes.Views.BlogItemsView = Marionette.ItemView.extend({
+    
+    tagName: 'div',
+    
+    className: "posts small-12 medium-12 large-12",
+    
+    initialize: function(){
+        this.template = _.template(Project.TemplateHelper(Project.Templates.Blog, 'BlogItems'));
+    },
+    
+    onBeforeRender: function(){
+        var date = new Date();
+        date.setTime(this.model.get('created')*1000);
+        this.model.set('fcreated', datef('dd MMM YYYY HH:mm',date));
+    },
+    
+});
+
+Project.Classes.Views.BlogItemsCollectionView = Marionette.CompositeView.extend({
+    
+    childView: Project.Classes.Views.BlogItemsView,
+    
+    childViewContainer: "#blogitems",
+    
+    tagName: 'div',
+    
+    initialize: function(){
+        this.template = _.template(Project.TemplateHelper(Project.Templates.Blog, 'BlogItemsCollection'));
+    },
+    
+    onShow: function(){
+        Project.RenderStatusSet('blogs');
+    }
+});
+
+return Project;
+
+});

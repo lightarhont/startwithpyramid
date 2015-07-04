@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Форма входа</title>
+
+		<!-- Foundation framework -->
+			<link href="${stpath + 'manager/css/style.css'}" rel="stylesheet">
+			<link href="${stpath + 'manager/foundation/stylesheets/foundation.css'}" rel="stylesheet">
+
+		<!-- Favicons and the like (avoid using transparent .png) -->
+			<link rel="shortcut icon" href="${stpath + 'favicon.ico'}" />
+			<link rel="apple-touch-icon-precomposed" href="${stpath + 'icon.png'}" />
+			<style>
+				div.errorlogin
+				{
+					color: #c00000;
+					font-size: 12px;
+					font-weight:700;
+					clear:both;
+				}
+			</style>
+	</head>
+	<body class="ptrn_a grdnt_a">
+		<div class="container">
+            <div class="row">
+                <div class="eight columns centered">
+                    
+                </div>
+            </div>
+			<div class="row">
+				<div class="eight columns centered">
+					<div class="login_box">
+						<div class="lb_content">
+                            <div class="login_logo"><img src="${stpath + 'manager/img/logo.png'}" alt="" /></div>
+							<div class="cf">
+								<h2 class="lb_ribbon lb_blue"><span>Авторизируйтесь</span><span style="display:none">Новый пароль</span></h2>
+								<a href="#" class="right small sl_link">
+									<span>Забыли пароль?</span>
+									<span style="display:none">Вернутся к форме входа</span>
+								</a>
+							</div>
+							<div class="row m_cont">
+								<div class="eight columns centered">
+									<div class="l_pane">
+										<form action="/manager/auth" method="post" class="nice" id="l_form">
+											<div class="sepH_c">
+												<div class="elVal">
+													<label for="username">Пользователь</label>
+													<input type="text" id="username" name="username" class="oversize expand input-text" />
+												</div>
+												<div class="elVal">
+													<label for="password">Пароль</label>
+													<input type="password" id="password" name="password" class="oversize expand input-text" />
+												</div>
+												${structure: errormsg}
+											</div>
+											<div class="cf">
+												<label for="remember" class="left"><input type="checkbox" id="remember">Запомнить</label>
+												<input type="submit" name="submit" class="button small radius right black" value="Вход" />
+											</div>
+										</form>
+									</div>
+									<div class="l_pane" style="display:none">
+										<form action="dashboard.html" method="post" class="nice" id="rp_form">
+											<div class="sepH_c">
+												<p class="sepH_b">Пожалуйста укажите email адресс. Мы вышлем ссылку для нового пароля по почте.</p>
+												<div class="elVal">
+													<label for="upname">E-mail:</label>
+													<input type="text" id="upname" name="upname" class="oversize expand input-text" />
+												</div>
+											</div>
+											<div class="cf">
+												<input type="submit" class="button small radius right black" value="Получить новый пароль" />
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="${stpath + 'manager/lib/jquery/jquery.min.js'}"></script>
+		<script src="${stpath + 'manager/lib/s_scripts.js'}"></script>
+		<script src="${stpath + 'manager/lib/validate/jquery.validate.min.js'}"></script>
+		<script>
+			$(document).ready(function() {
+				$(".sl_link").click(function(event){
+					$('.l_pane').slideToggle('normal').toggleClass('dn');
+					$('.sl_link,.lb_ribbon').children('span').toggle();
+					event.preventDefault();
+				});
+
+				$("#l_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						username: "required",
+						password: "required"
+					},
+					messages: {
+						username: "Пожалуйста введите ваше имя!",
+						password: "Пожалуйста введите ваш пароль!"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
+
+				$("#rp_form").validate({
+					highlight: function(element) {
+						$(element).closest('.elVal').addClass("form-field error");
+					},
+					unhighlight: function(element) {
+						$(element).closest('.elVal').removeClass("form-field error");
+					},
+					rules: {
+						upname: {
+							required: true,
+							email: true
+						}
+					},
+					messages: {
+						upname: "Пожалуйста укажите правильный email адресс"
+					},
+					errorPlacement: function(error, element) {
+						error.appendTo( element.closest(".elVal") );
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

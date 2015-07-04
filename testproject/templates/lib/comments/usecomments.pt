@@ -1,0 +1,64 @@
+<tal:block condition="python: result.usecomments != '0'">
+  <div class="row collapse" style="min-width: 100%;">  
+  <a href="javascript: void(0)" class="commentsload">
+    Клик
+  </a>
+  
+  <tal:block condition="python: my != None">
+    <tal:block condition="python: 4 in my['roles']">
+      
+      <div class="adcommentform" style="width:616px;">
+          <div id="result"></div>
+          <form id="adcomment">
+            <fieldset>
+              <legend>Новый комментарий</legend>
+              <div class="row collapse prefix-radius">
+                <div class="large-2 columns">
+                  <label data-tooltip class="prefix has-tip" title="Тема сообщения не обязательна, должна содержать только текст и не должна быть длиннее 64 символа.">Тема:</label>
+                </div>
+                <div class="large-10 columns titlecomment">
+                  <input type="text" name="title" placeholder="Тема вашего сообщения..." />
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="large-12">
+                  <textarea name="comment" id="wbbeditor"></textarea>
+                </div>
+              </div>
+              
+              
+              <input id="updateid" type="hidden" value="0" />
+              
+              <div class="row collapse">
+                <div class="large-12 columns">
+                  <ul class="square">
+                   <li><small>Сообщение не должно превышать 5000 символов с тегами. Лишний текст убирается.</small></li>
+                   <li><small>Ограничение в 3 секунды при отправке новых комментариев.</small></li>
+                   <li><small>Премодерация. Новые сообщения становятся видимыми только после проверки модератора/администратора</small></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="row collapse right">
+                <div class="large-12 submit-button">
+                  <a class="button secondary small radius" href="javascript: void(0);" onclick="submitajax('adcomment')">
+                    Оставить комментарий
+                  </a>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+      </div>
+    </tal:block>
+    <tal:block condition="python: not (4 in my['roles'])">
+      <div class="msg">Не достаточно прав для комментирования!</div>
+    </tal:block>
+  </tal:block>
+  
+  <div class="row collapse comments" style="width:616px;"></div>
+  </div>
+</tal:block>
+<tal:block condition="python: result.usecomments == '0'">
+  <div class="notusecomments">Комментарии отключены!</div>
+</tal:block>

@@ -1,0 +1,21 @@
+define(['../Models/BlogItems'], function(){
+
+Project.Classes.Collections.BlogItems = Backbone.Collection.extend({
+    
+    initialize: function(models, options){
+      if (!_.isUndefined(options)) _.extend(this, options);
+      
+    },
+    model: Project.Classes.Models.BlogItems,
+    url: function() {
+        var url = pfx+'blogs/';
+        if(this.tag) {
+            return url+'tagblogs/'+this.tag;
+        }
+        return url+'blogs';
+    }
+});
+
+return Project;
+
+});

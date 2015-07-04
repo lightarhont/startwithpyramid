@@ -1,0 +1,2 @@
+
+Sitemap: http://testproject.python/sitemap.xml

@@ -1,0 +1,9 @@
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Панель управления</title>
+ </head>
+ <body>
+  <p>результат - ${myresponse}</p>
+ </body>
+</html>

@@ -1,0 +1,426 @@
+
+//генерация случайного числа
+${structure: rand}
+
+//генерация случайной строки 8 символов
+${structure: generate}
+
+//Выбрать всё в таблице
+${structure: checkall}
+
+//Рендерит количество страниц
+${structure: totalpages}
+
+//Педжинатор таблицы
+${structure: paging}
+
+//Фильтр
+${structure: filter}
+
+//Очистка фильтра
+${structure: filterclear}
+
+//Сортировка
+${structure: orderby}
+
+//Pirobox
+${structure: pirobox}
+
+
+
+var cmgeneratepassword = (function(){
+                    $('#generatepassword').click(function(){
+                       var password = cmgenerate(8);
+                       $('#setpassword').val(password);
+                       $('#setpasswordconfirm').val(password);
+                       alert('Пароль сгенерирован, запишите его: ' + password);
+                      });
+    });
+
+var cmchangepassword = (function(){
+                       $('#changepassword a').click(function(){
+                       $('#changepassword').css('display', 'none');
+                       $('#ifchangepassword').css('display', 'block');
+                      });
+    });
+
+var cmtablemenufunc = (function()
+                       {
+                        $('#tadditem').click(function(){
+                             $('#tablefunc').html(newrestore);
+                             cmchangepassword();
+                             cmgeneratepassword();
+                             prth_chosen_select.init();
+                             prth_tips.init();
+                             cmvalidation.init();
+                             cmnewbuttons();
+                             cmpirobox();
+                             
+                             $('html, body').animate({scrollTop: $('#tablefunc').offset().top}, 500);
+                            });
+                        $('#tedititem').click(function(){
+                             $('#cdt tbody td:nth-child(1)').children().each(function(){
+                                 if($(this).prop("checked"))
+                                 {
+                                    var item = $(this).attr('id').split('-')[1];
+                                    cmedititem(item);
+                                    return false;
+                                 }
+                                });
+                             $('html, body').animate({scrollTop: $('#tablefunc').offset().top}, 500);
+                            });
+                        $('#tdeleteitem').click(function(){
+                             var myarr = [];
+                             $('#cdt tbody td:nth-child(1)').children().each(function(){
+                                 if($(this).prop("checked"))
+                                 {
+                                    var item = $(this).attr('id').split('-')[1];
+                                    myarr[myarr.length] = item;
+                                    
+                                 }
+                                });
+                             cmdeleteitems(myarr);
+                            });
+                       }
+                      );
+
+var cmtablefunc = (function()
+                   {
+                    //по событию на каждое поле
+                    $('#cdt tbody td:nth-child(3)').click(function(){
+                     var parent = $(this).parent();
+                     var input = parent.children('td:nth-child(1)').children();
+                     item = $(input).attr('id').split('-')[1];
+                     cmedititem(item);
+                     $('html, body').animate({scrollTop: $('#tablefunc').offset().top}, 500);
+                    });
+                    }
+                    );
+
+var cmdeleteitems = (function(items){
+     data = {'delitems': JSON.stringify(items)};
+     url = preurl + 'deleteitems';
+     $.ajax({
+        "async": false,
+        'url': url,
+        'type': 'POST',
+        'data': data,
+        "success": function(data)
+         {
+          if(data == 1)
+          {
+            if(items.length>0)
+            {
+             $('#tablesearchclear').click();
+            }
+          }
+          else
+          {
+            alert('Возникла какая-то ошибка!');
+          }
+         }
+        });
+    });
+
+var cmtbody = (function(obj)
+               {
+                var templateFunction = doT.template(trtabletpl);
+                var result = templateFunction(obj);
+                return result;
+               }
+               );
+
+var cmedititem = (function(item)
+                  {
+                        url = preurl + 'loaditem/'+ item
+                         
+                        $.ajax({
+                             "async": false,
+                             "url": url,
+                             "success": function(data)
+                             {
+                             $('#tablefunc').html(cmedititemrender(data));
+                             }
+                             });
+                        cmchangepassword();
+                        cmgeneratepassword();
+                        prth_chosen_select.init();
+                        prth_tips.init();
+                        cmvalidation.init();
+                        cmeditbuttons();
+                        cmpirobox();
+                  }
+                 );
+
+
+var cmsaveitem = (function(){
+        var id              = $('#edititemid').val();
+        var username        = $('#setusername').val();
+        var fullname        = $('#setfullname').val();
+        var email           = $('#setemail').val();
+        var password        = $('#setpassword').val();
+        
+        var roles = [];
+        $('#setroles').children('option:selected').each(function(){
+            roles[roles.length] = $(this).val();
+            });
+        
+        data = {
+                'id': id,
+                'username': username,
+                'fullname': fullname,
+                'email': email,
+                'password': password,
+                'roles': JSON.stringify(roles),
+                }
+        if (dataitem.avatars != undefined && dataitem.avatars.userid == id)
+        {
+            data.avatarsource = dataitem.avatars.source
+            data.avatarsize1 = dataitem.avatars.size1
+            data.avatarsize2 = dataitem.avatars.size2
+        }
+        
+        $.ajax({
+            'url': preurl+'saveitem',
+            'type': 'POST',
+            'data': data,
+            'success': function(data)
+             {
+              if(data == 1)
+              {
+                $('#tablesearchclear').click();
+                if (id == 0)
+                {
+                    cgstatus = 'Получены новые данные!';
+                }
+                else
+                {
+                    cgstatus = 'Данные успешно изменены!';
+                }
+              }
+              else
+              {
+                cgstatus = 'Возникла какая-то ошибка!';
+              }
+              $('.opstatus').html(cgstatus);
+             }
+            });
+    });
+
+var cmvalidation = {
+		init: function() {
+			form_validator = $("form.validate").validate({
+				highlight: function(element) {
+					$(element).closest('div.elVal').addClass("form-field error");
+				},
+				unhighlight: function(element) {
+					$(element).closest('div.elVal').removeClass("form-field error");
+					var errors = form_validator.numberOfInvalids();
+					if(errors == 0){
+						$('#showMessage').remove();
+					}else {
+						$('#showMessage .errorsNb').text(errors);
+					};
+				},
+				invalidHandler: function(form, validator) {
+					var errors = form_validator.numberOfInvalids();
+					//scroll to top
+					$('html,body').animate({ scrollTop: $('form.validate').offset().top - 34 }, 'slow');
+					//show error message (top sticky nottification)
+					$('body').showMessage({
+						thisMessage			: ['Ваша форма содержит <span class="errorsNb">'+errors+'</span> ошибок, смотрите детали ниже.'],
+						className			: 'fail',
+						autoClose			: false
+					});
+				},
+				rules: {
+					setusername: {
+      required: true,
+      minlength: 3,
+      maxlength: 12,
+      remote:{
+        type: 'POST',
+        url: preurl+'findusername',
+        data: {
+               setusername: (function()
+               {
+                return $('#setusername').val();
+               }),
+               id: (function()
+               {
+                return $('#edititemid').val();
+               })
+              }
+        }
+      },
+					setfullname:  {
+      required: true,
+      minlength: 3,
+      maxlength: 12
+      },
+					setemail: {
+						required: true,
+						email: true,
+      remote:{
+        type: 'POST',
+        url: preurl+'findemail',
+        data: {
+               setemail: (function()
+               {
+                return $('#setemail').val();
+               }),
+               id: (function()
+               {
+                return $('#edititemid').val();
+               })
+              }
+        }
+					},
+					setpassword: {
+						minlength: 5
+					},
+					setpasswordconfirm: {
+						minlength: 5,
+						equalTo: "#setpassword"
+					}
+				},
+				messages: {
+					setusername: {
+      required: "Введите имя пользователя!",
+      minlength: "Имя пользователя не должно быть короче 3 символов!",
+      maxlength: "Имя пользователя не должно быть больше 12 символов!",
+      remote: "Пользователь с таким именем уже существует!"
+     },
+					setfullname: {
+      required: "Введите полное имя!",
+      minlength: "Полное имя не должно быть короче 3 символов!",
+      maxlength: "Полное имя не должно быть больше 12 символов!"
+     },
+					setpassword: {
+						minlength: "Пароль не должен быть короче 5 символов!"
+					},
+					setpasswordconfirm: {
+						minlength: "Пароль не должен быть короче 5 символов!",
+						equalTo: "Пароли не совпадают!"
+					},
+					setemail: {
+      required: "Введите правильный email адрес!",
+      email: "Введите правильный email адрес!",
+      remote: "Пользователь с таким email уже существует!"
+     }
+				},
+				showErrors: function (errorMap, errorList) {
+					this.defaultShowErrors();
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo( element.closest("div.elVal") );
+				},
+				//submit form
+				submitHandler: function(form) {
+					cmsaveitem();
+				},
+				ignore: ""
+			});
+		}
+	};
+
+var cmnewbuttons = (function(){
+    $('#newitem').click(function(){
+         $('#newform').submit();
+        });
+    });
+
+var cmeditbuttons = (function(){
+     $('#saveitem').click(function(){
+         $('#editform').submit();
+        });
+     $('#restoreitem').click(function(){
+         $('#tablefunc').html(editrestore);
+         cmchangepassword();
+         cmgeneratepassword();
+         prth_chosen_select.init();
+         prth_tips.init();
+         cmvalidation.init();
+         cmeditbuttons();
+         cgstatus = 'Сброшена начальная копия данных!';
+         $('.opstatus').html(cgstatus);
+        });
+    });
+
+var cmedititemrender = (function(data)
+                        {
+                         roles=data.roles;
+                         var selectroles = [];
+                         var selected = '';
+                         for(i=0;i<allroles.length;i++) {
+                            selected = '';
+                            if(roles.indexOf(allroles[i][0]) != '-1')
+                            {
+                                selected = ' selected="selected"';
+                            }
+                            else
+                            {
+                                selected = '';
+                            }
+                            <?python exception1 = "selectroles[i] = '<option value=\"'+allroles[i][0]+'\" '+selected+' >'+allroles[i][1]+'</option>'" ?>
+                            ${structure: exception1}
+                         }
+                         
+                         if(data.avatar1 != null ||  data.avatar2 != null || data.avatar3 != null)
+                         {
+                            var avatarsfolder = home + "static/users/"+ data.id +"/avatars/"
+                            dataitem.avatars = {'source': data.avatar1, 'size1': data.avatar2, 'size2': data.avatar3};
+                            currtime = new Date().getTime();
+                            data.avatar1 += '?id=' + currtime;
+                            data.avatar2 += '?id=' + currtime;
+                            data.avatar3 += '?id=' + currtime;
+                         }
+                         else
+                         {
+                            var avatarsfolder = home + "static/users/default/avatars/"
+                            data.avatar1 = "size1.jpg"
+                            data.avatar2 = "size2.jpg"
+                            data.avatar3 = "size3.jpg"
+                         }
+                         
+                         data.avatarsfolder = avatarsfolder;
+                         
+                         data.htmlroles = ''.concat(selectroles);
+                         var templateFunction = doT.template(edittpl);
+                         var result = templateFunction(data);
+                         editrestore = result;
+                         return result;
+                        }
+                      );
+
+var cmauiimport = (function(data){
+    var userid = $('#edititemid').val();
+    var url = home + 'uatmp/' + userid;
+    $.ajax({
+                             "async": false,
+                             "url": url,
+                             'type': 'POST',
+                             'data': data,
+                             "success": function(data)
+                             {
+                              currtime = new Date().getTime();
+                              $('.imagestargets #target1').html('<a href="' + home + data.size1 + '?id=' + currtime + '" rel="single"  class="pirobox" title=""><img src="' + home + data.size1 + '?id=' + currtime + '" /></a>')
+                              $('.imagestargets #target2').html('<img src="' + home + data.size2 + '?id=' + currtime + '" />')
+                              $('.imagestargets #target3').html('<img src="' + home + data.size3 + '?id=' + currtime + '" />')
+                              cmpirobox();
+                              
+                              var str = data.size1;
+                              source = str.substr(str.lastIndexOf("/")+1);
+                              
+                              var str = data.size2;
+                              size1 = str.substr(str.lastIndexOf("/")+1);
+                              
+                              var str = data.size3;
+                              size2 = str.substr(str.lastIndexOf("/")+1);
+                              
+                              dataitem.avatars = {'userid': userid, 'source': source, 'size1': size1, 'size2': size2};
+                             }
+                             });
+    
+                   });
+

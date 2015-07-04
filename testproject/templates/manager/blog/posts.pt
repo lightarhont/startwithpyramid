@@ -1,0 +1,223 @@
+<html metal:use-macro="load: ../common/html/manager.pt">
+
+<div class="contentimport" metal:fill-slot="content">
+  <div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Данные</p>
+					</div>
+					<div class="box_c_content">
+						<div class="row">
+							<div class="eight columns">
+								<form class="nice custom">
+								<div style="float: left;">
+								 <select id="selecttablesearch" name="nice_select">
+											<option value="none"> --- Поле для поиска --- </option>
+											<option value="title">title</option>
+								 </select>
+								</div>
+								
+								<div style="float: left; margin-top: 2px; margin-left: 10px;">
+								 <input type="text" id="fieldtablesearch" name="nice_text_small" class="input-text small" />
+								</div>
+								<div style="float: left; margin-top: 3px; margin-left: 10px;">
+									
+								 <div class="gh_button-group">
+								  <a href="javascript: void(0);" id="tablesearch" class="gh_button primary pill">Отобрать</a>
+								  <a href="javascript: void(0);" id="tablesearchclear" class="gh_button pill">Сбросить</a>
+         </div>
+								</div>
+								</form>
+							</div>
+							<div class="four columns">
+							 <div class="gh_button-group">
+								 <a href="javascript: void(0);" id="tadditem" class="gh_button primary pill">Добавить</a>
+								 <a href="javascript: void(0);" id="tedititem" class="gh_button pill">Редактировать</a>
+								 <a href="javascript: void(0);" id="tdeleteitem" class="gh_button pill">Удалить</a>
+        </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="twelve columns">
+								<div id="loader1"><img src="img/loader.gif" /></div>
+								<table id="cdt" cellspacing="0" width="100%">
+									<thead>
+            <tr>
+             <th><input id="select-all" type="checkbox" /></th>
+													<th>ид</th>
+             <th>Заголовок</th>
+             <th>Публикация</th>
+													<th>Создано</th>
+													<th>Редактир.</th>
+            </tr>
+        </thead>
+									<tbody>
+            <tal:block repeat="post result.posts">
+                <tr>
+                    <td><input id="item-${post.id}" class="itemcheck" type="checkbox" /></td>
+                    <td tal:content="post.id"></td>
+                    <td tal:content="post.title"></td>
+                    <td tal:content="post.published"></td>
+                    <td tal:content="post.datefromtimestamp(dateformat=result.appconfig['timeformat'][0])"></td>
+                    <td tal:content="post.datefromtimestamp2(dateformat=result.appconfig['timeformat'][0])"></td>
+                </tr>
+            </tal:block>
+									</tbody>
+									<tfoot>
+										<tr>
+           <th></th>
+											<th>ид</th>
+           <th>Заголовок</th>
+           <th>Публикация</th>
+											<th>Создано</th>
+											<th>Редактир.</th>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="pages"><div id="pagination"></div><div id="totalpages"></div></div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+	</div>
+
+ <div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Функции</p>
+					</div>
+					<div class="box_c_content">
+						<div id="tablefunc" class="row">
+							
+							<form id="newform" class="nice validate">
+								<div class="row editsavemenu">
+									<div class="eight columns">
+										<div class="opheader"><h5>Новое</h5></div><div class="opstatus"></div>
+									</div>
+									<div class="four columns">
+										<div class="gh_button-group">
+											<a href="javascript: void(0);" id="newitem" class="gh_button primary pill">Сохранить</a>
+											<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Заголовок:</label>
+										  <input type="text" id="setposttitle" name="setposttitle" value="" class="input-text large" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Заголовок поста блога">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Псевдоним:</label>
+										  <input type="text" id="setalias" name="setalias" value="" class="input-text large" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Псевдоним, используется как основная часть URL.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Пользователь:</label>
+										  <select id="setuser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+                <tal:block repeat="user result.users">
+                    <option tal:attributes="value user.id" tal:content="user.username"></option>
+                </tal:block>
+            </select>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Уникальное имя пользователя автора поста.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+         
+         <div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="intro">Вступление:</label>
+										  <textarea name="into"></textarea>
+										</div>
+									</div>
+									</div>
+									
+         <div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="content">Содержимое:</label>
+										  <textarea name="content"></textarea>
+										</div>
+									</div>
+									</div> 
+         
+								</div>
+        
+							 <div class="four columns">
+									<label class="sepH_b">Список тэгов:</label>
+											<select id="settags" data-placeholder="Список доступных тэгов" style="width:300px;" class="chzn-select" multiple tabindex="6">
+												<tal:block repeat="tag result.tags">
+													<option tal:attributes="value tag[0]" tal:content="tag[1]"></option>
+												</tal:block>
+											</select>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="published" class="iRadio_btn" />
+												<small>Публикация</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="comments" class="iRadio_btn" />
+												<small>Комментарии</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+         <div class="formRow">
+										<div class="row">
+										 <div style="float:left;">
+											 <div class="sepH_b">
+												<input type="checkbox" name="comments_premoderation" class="iRadio_btn" />
+												<small>Премодерация комментариев</small>
+											</div>
+											</div>
+									 </div>
+									</div>
+         
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="0" />
+							</form>
+							
+						</div>
+					</div>
+				</div>
+	</div>
+</div>
+																												
+</html>

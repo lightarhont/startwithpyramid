@@ -1,0 +1,41 @@
+<div class="dotjs-comments-commenttpl">
+    <div class="row panel radius comment" id="c{{=it.id}}">
+            <div class="row info">
+                <div class="itemid"><a href="#">#счётчик</a></div>
+                <div class="username">
+                    <a href="javascript: void(0);">
+                        {{=it.username}}
+                    </a>
+                </div>
+                <div class="datetime">
+                    {{=it.datetime}}
+                </div>
+                <tal:block condition="python: (my != None) and (4 in my['roles'])">
+                    <tal:block condition="python: comment.userid == my.id">
+                        <div class="option1"><a href="javascript: void(0);" onclick="citeauthor({{=it.id}});">Цитировать</a></div>
+                        <div class="option2"><a href="javascript: void(0);" onclick="editcomment({{=it.id}});">Редактировать</a></div>
+                        <div class="option3"><a href="javascript: void(0);" onclick="deletecommentconfirm({{=it.id}});">Удалить</a></div>
+                    </tal:block>
+                    <tal:block condition="python: comment.userid != my.id">
+                        <div class="option1"><a href="javascript: void(0);" onclick="citeauthor({{=it.id}});">Цитировать</a></div>
+                    </tal:block>
+                </tal:block>
+            </div>
+            
+            <tal:block condition="python: useavatars == '1'">
+                <div class="partinfo">
+                    <img src="{{=it.spath}}users/{{=it.myuserid}}/avatars/{{=it.avatar}}" />
+                </div>
+                <div class="partdata">
+                    <div class="titlecomment">{{=it.title}}</div>
+                    <div class="bodycomment">{{it.content}}</div>
+                </div>
+            </tal:block>
+            <tal:block condition="python: useavatars != '1'">
+                <div class="titlecomment">{{=it.title}</div>
+                <div class="bodycomment">{{=it.content}}</div>
+            </tal:block>
+            
+    </div>
+
+</div>

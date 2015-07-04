@@ -1,0 +1,37 @@
+var cmorderby = (function(){
+                      var len = $('#cdt thead th').size();
+                      var el = '';
+                      for(i=1;i<len+1; i++)
+                      {
+                       if(i!=1)
+                       { 
+                        $('#cdt th:nth-child('+ i +')').click(function(){
+                         
+                         i = $(this).index()+1;
+                         el = '#cdt th:nth-child('+ i +')';
+                         if(i != sort.col)
+                         {
+                          sort.col = i;
+                          sort.asc = 1;
+                          $('#cdt th').css('background-image','url(lib/datatables/images/sort_both.gif)');
+                          $(el).css('background-image','url(lib/datatables/images/sort_desc.gif)');
+                         }
+                         else
+                         {
+                          if(sort.asc == 1)
+                          {
+                           $(el).css('background-image','url(lib/datatables/images/sort_asc.gif)');
+                           sort.asc = 0;
+                          }
+                          else
+                          {
+                           $(el).css('background-image','url(lib/datatables/images/sort_desc.gif)');
+                           sort.asc = 1;
+                          }
+                         }
+                         paging.setPage();
+                         paging.setPage(pcurrent);
+                       });
+                       }
+                      }
+                      });

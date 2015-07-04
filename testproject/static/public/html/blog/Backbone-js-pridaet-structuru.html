@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="ru" class=" js no-flexbox flexboxlegacy canvas canvastext no-webgl touch no-geolocation postmessage websqldatabase no-indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent no-video no-audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="fragment" content="!">
+		<title>Проект::Блог::Backbone придаёт структуру</title>
+
+        <link href="http://127.0.0.1:5000/static/public/lib/foundation/bower_components/foundation/css/normalize.css" rel="stylesheet">
+		<link href="http://127.0.0.1:5000/static/public/lib/foundation/bower_components/foundation/css/foundation.css" rel="stylesheet">
+		<link href="http://127.0.0.1:5000/static/public/lib/foundation/stylesheets/app.css" rel="stylesheet">
+		<link href="http://127.0.0.1:5000/static/public/lib/wysibb/theme/default/wbbtheme.css" rel="stylesheet">
+		<link href="http://127.0.0.1:5000/static/public/lib/blogs/blogs.css" rel="stylesheet">
+		<link href="http://127.0.0.1:5000/static/public/lib/bower_components/colorbox/example4/colorbox.css" rel="stylesheet">
+    
+        <link rel="shortcut icon" href="http://127.0.0.1:5000/static/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" href="http://127.0.0.1:5000/static/icon.png">
+
+	<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="config" src="http://127.0.0.1:5000/static/public/js/config.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/start" src="http://127.0.0.1:5000/static/public/js/project/start.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modernizr" src="http://127.0.0.1:5000/static/public/js/../lib/foundation/bower_components/modernizr/modernizr.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/requirejs-text/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/jquery/jquery.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="underscore" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/underscore/underscore.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="backbonewreqr" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="backbonebabysitter" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="datef" src="http://127.0.0.1:5000/static/public/js/../lib/datef/datef.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="datef_ru" src="http://127.0.0.1:5000/static/public/js/../lib/datef/lang/ru.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="backbone" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/backbone/backbone.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="marionette" src="http://127.0.0.1:5000/static/public/js/../lib/bower_components/marionette/lib/backbone.marionette.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Helpers/Cookie" src="http://127.0.0.1:5000/static/public/js/project/Helpers/Cookie.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Models/User" src="http://127.0.0.1:5000/static/public/js/project/Models/User.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/routes" src="http://127.0.0.1:5000/static/public/js/project/routes.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/controllers" src="http://127.0.0.1:5000/static/public/js/project/controllers.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/layouts" src="http://127.0.0.1:5000/static/public/js/project/layouts.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Models/BlogItem" src="http://127.0.0.1:5000/static/public/js/project/Models/BlogItem.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Views/BlogItem" src="http://127.0.0.1:5000/static/public/js/project/Views/BlogItem.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Views/RightBlocks" src="http://127.0.0.1:5000/static/public/js/project/Views/RightBlocks.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Models/RightBlocks" src="http://127.0.0.1:5000/static/public/js/project/Models/RightBlocks.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Collections/RightBlocks" src="http://127.0.0.1:5000/static/public/js/project/Collections/RightBlocks.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Views/UserPanel" src="http://127.0.0.1:5000/static/public/js/project/Views/UserPanel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Modules/Comments/Start" src="http://127.0.0.1:5000/static/public/js/project/Modules/Comments/Start.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Modules/Comments/Models" src="http://127.0.0.1:5000/static/public/js/project/Modules/Comments/Models.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Modules/Comments/Views" src="http://127.0.0.1:5000/static/public/js/project/Modules/Comments/Views.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="project/Modules/Comments/Collections" src="http://127.0.0.1:5000/static/public/js/project/Modules/Comments/Collections.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="wysibb" src="http://127.0.0.1:5000/static/public/js/../lib/wysibb/jquery.wysibb.js"></script><base href="http://127.0.0.1:5000/static/">
+		
+	<script>
+		
+        //Базовые опции
+        var home = 'http://127.0.0.1:5000/'
+        
+        
+	</script>
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:5000/_debug_toolbar/static/css/toolbar.css"></head>
+	<body>
+		
+		<div class="contentimport">
+  
+  <script type="text/template" id="userpanel">
+   <div class="large-12 large-centered columns" style="max-width: 1050px;">
+     <div style="float: right;">
+   <p>Вы авторизированы как <%= username %> <a href="/#user/profile">[Редактировать профиль]</a> <a href="/#logout">[Выход]</a></p>
+    </div>
+    </div>
+  </script>
+  
+  <script type="text/template" id="auth">
+    <div class="large-12 large-centered columns" style="max-width: 1050px;">
+     <div style="float: right;">
+   <p>Вы не <a href="/#login">[Вошли]</a>. Если у вас нет аккаунта то нужно пройти <a href="/#registration">[Регистрацию]</a>.</p>
+    </div>
+    </div>
+  </script>
+  
+  <script type="text/template" id="mainmenu">
+            <div class="row mainmenu">
+                <ul>
+                <li>
+                    <a href="/#">Главная</a>
+                </li>
+                <li>
+                    <a href="/#blogs">Блог</a>
+                </li>
+                <li>
+                    <a href="/#contacts">Контакты</a>
+                </li>
+                <!--<li>
+                    <a href="#">Mobiles</a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">Options Panel »</a>
+                    <ul>
+                        <li>
+                            <a href="#">General Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Styling Options</a>
+                        </li>
+                        <li>
+                            <a href="#">Single Post</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                </ul>
+            </div>
+  </script>
+  
+  <div id="mwr"><div><div class="toppos row"><div>
+    <div class="large-12 large-centered columns" style="max-width: 1050px;">
+     <div style="float: right;">
+   <p>Вы не <a href="/#login">[Вошли]</a>. Если у вас нет аккаунта то нужно пройти <a href="/#registration">[Регистрацию]</a>.</p>
+    </div>
+    </div>
+  </div></div>
+    <div class="menupos row"><div class="large-12 large-centered columns">
+            <div class="row mainmenu">
+                <ul>
+                <li>
+                    <a href="/#">Главная</a>
+                </li>
+                <li>
+                    <a href="/#blogs">Блог</a>
+                </li>
+                <li>
+                    <a href="/#contacts">Контакты</a>
+                </li>
+                <!--<li>
+                    <a href="#">Mobiles</a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">Options Panel »</a>
+                    <ul>
+                        <li>
+                            <a href="#">General Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Styling Options</a>
+                        </li>
+                        <li>
+                            <a href="#">Single Post</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                </ul>
+            </div>
+  </div></div>
+    <div class="middlepos row">
+        <div class="large-12 large-centered columns">
+            <div class="row">
+                <div style="min-width: 658px; max-width: 720px; float: left;" class="column24"><div class="row collapse">
+                        <div class="post large-12">
+                            <div class="row datepart">
+                                <div class="datepartp1">
+                                ◢
+                                </div>
+                                <div class="datepartp2">
+                                    17 мая 2015 05:42
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="titlepart large-12">
+                                    <h2>Backbone придаёт структуру</h2>
+                                </div>
+                            </div>
+                            <div class="row msc">
+                                <div class="small-12 medium-12 large-12">
+                                    Создано: admin
+                                    
+                                    , в тэги:
+                                          
+                                                               <a href="/#blogs/tag/Backbone">Backbone</a>
+                                          
+                                                               <a href="/#blogs/tag/Одностраничное приложение">Одностраничное приложение</a>
+                                          
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>Проект размещается на GitHub, с доступным аннотированным исходным кодом, с онлайновыми тестами с примером приложения, со списком туториалов и списком реальных проектов, которые используют Backbone. Backbone доступен под лицензией MIT. Русская версия документации размещается на GitHub. Оставляйте баг-репорты и обсуждайте фичи в багтрекере на GitHub'е, на IRC-канале Freenode #documentcloud, задавайте вопросы в группу Google, добавляйте страницы в вики, или шлите твиты @documentcloud. Backbone — это компонент DocumentCloud c открытым исходным кодом.</p>
+
+                            </div>
+                            
+                            <div class="row collapse commentslayout">
+                             <div class="addcommentform">
+                             </div>
+    
+                             <div class="row showhidecomments">
+                              <div class="panel radius showhide">Показать комменатрии: 2</div>
+                             </div>
+   
+                             <div class="row collapse comments" id="allcomments"></div>
+                            </div>
+                            
+                        </div>
+  </div></div>
+                <div style="min-width: 27px; max-width: 30px; float: left;" class="column1">&nbsp;</div>
+                <div style="min-width: 274px; max-width: 300px; float: left;" class="column10"><div class="row toggleblock"><div>
+        <div class="small-12 medium-12 large-12">
+            <div class="row collapse">
+                <div class="panel1p11 small-6 medium-6 large-6 columns">
+                    <div>Тэги</div>
+                </div>
+                <div class="panel1p12 small-6 medium-6 large-6 columns">
+                    <div>Популярное</div>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div class="panel1p2 small-12 medium-12 large-12"><div>
+        <div class="small-12 medium-12 large-12">
+            <ul>
+            
+                <li><a href="/#blogs/tag/Backbone">Backbone</a></li>
+            
+                <li><a href="/#blogs/tag/Одностраничное приложение">Одностраничное приложение</a></li>
+            
+                <li><a href="/#blogs/tag/Мобильная реклама">Мобильная реклама</a></li>
+            
+                <li><a href="/#blogs/tag/оккультизм">оккультизм</a></li>
+            
+                <li><a href="/#blogs/tag/эзотерика">эзотерика</a></li>
+            
+                <li><a href="/#blogs/tag/интересные новости">интересные новости</a></li>
+            
+            </ul>
+        </div>
+    </div></div>
+            </div>
+        </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="footerpos row">
+        <div class="large-12">
+        </div>
+    </div></div></div>
+  
+ </div>
+		
+		<script data-main="http://127.0.0.1:5000/static/public/js/config.js" src="http://127.0.0.1:5000/static/public/lib/bower_components/require/build/require.js"></script>
+
+	<script type="text/javascript">
+    var fileref=document.createElement("link")
+    fileref.setAttribute("rel", "stylesheet")
+    fileref.setAttribute("type", "text/css")
+    fileref.setAttribute("href", "http://127.0.0.1:5000/_debug_toolbar/static/css/toolbar.css")
+    document.getElementsByTagName("head")[0].appendChild(fileref)
+</script>
+
+<div id="pDebug">
+    <div style="display: block; " id="pDebugToolbarHandle">
+        <a title="Show Toolbar" id="pShowToolBarButton" href="http://127.0.0.1:5000/_debug_toolbar/313339393439343937393036383332" target="pDebugToolbar">« FIXME: Debug Toolbar</a>
+    </div>
+</div>
+
+</body></html>

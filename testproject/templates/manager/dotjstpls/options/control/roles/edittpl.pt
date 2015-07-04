@@ -1,0 +1,77 @@
+							<form id="editform" class="nice validate">
+								<div class="row editsavemenu">
+									<div class="eight columns">
+										<div class="opheader"><h5>Редактировать</h5></div><div class="opstatus"></div>
+									</div>
+									<div class="four columns">
+										<div class="gh_button-group">
+											<a href="javascript: void(0);" id="saveitem" class="gh_button primary pill">Сохранить</a>
+											<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Название роли:</label>
+										  <input type="text" id="setrolename" name="setrolename" value="{{=it.rolename}}" class="input-text medium" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Роль должна содержать от 3 до 12 символов.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Группа роли:</label>
+										  <select id="selectrolegroup" name="nice_select">{{=it.rolegroup}}</select>
+											</div>
+											<div class="ttipform" style="margin-left: 10px;">
+												<span class="ttip_r" title="Группа роли служит для категоризации ролей.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal textareasize">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Описание:</label>
+										 <textarea id="setdescription" cols="1" rows="3" class="expand">{{=it.description}}</textarea>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Описание роли не более 255 символов.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div class="formRow elVal smallsp">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Порядок:</label>
+										 <input type="text" id="setorder" class="expand medium" value="{{=it.order}}"/>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Порядок для удобства сортировки.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									
+								</div>
+							 <div class="four columns">
+         <label class="sepH_b">Список прав:</label>
+									<select id="setpermissions" data-placeholder="Список доступных прав" style="width:300px;" class="chzn-select" multiple tabindex="6">
+          {{=it.htmlpermissions}}
+									</select>
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="{{=it.id}}" />
+							</form>

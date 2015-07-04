@@ -1,0 +1,220 @@
+<html metal:use-macro="load: common/html/manager.pt">
+
+<div class="contentimport" metal:fill-slot="content">
+ <div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Данные</p>
+					</div>
+					<div class="box_c_content">
+						<div class="row">
+							<div class="eight columns">
+								<form class="nice custom">
+								<div style="float: left;">
+								 <select id="selecttablesearch" name="nice_select">
+											<option value="none"> --- Поле для поиска --- </option>
+											<option value="username">username</option>
+											<option value="email">email</option>
+								 </select>
+								</div>
+								
+								<div style="float: left; margin-top: 2px; margin-left: 10px;">
+								 <input type="text" id="fieldtablesearch" name="nice_text_small" class="input-text small" />
+								</div>
+								<div style="float: left; margin-top: 3px; margin-left: 10px;">
+									
+								 <div class="gh_button-group">
+								  <a href="javascript: void(0);" id="tablesearch" class="gh_button primary pill">Отобрать</a>
+								  <a href="javascript: void(0);" id="tablesearchclear" class="gh_button pill">Сбросить</a>
+         </div>
+								</div>
+								</form>
+							</div>
+							<div class="four columns">
+							 <div class="gh_button-group">
+								 <a href="javascript: void(0);" id="tadditem" class="gh_button primary pill">Добавить</a>
+								 <a href="javascript: void(0);" id="tedititem" class="gh_button pill">Редактировать</a>
+								 <a href="javascript: void(0);" id="tdeleteitem" class="gh_button pill">Удалить</a>
+        </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="twelve columns">
+								<div id="loader1"><img src="img/loader.gif" /></div>
+								<table id="cdt" cellspacing="0" width="100%">
+									<thead>
+            <tr>
+             <th><input id="select-all" type="checkbox" /></th>
+													<th><!--id-->ид</th>
+             <th><!--username-->Имя</th>
+             <th>email</th>
+													<th><!--created-->Создан</th>
+													<th><!--activity-->Активность</th>
+            </tr>
+        </thead>
+									<tbody>
+										<tal:block repeat="user result.users">
+										<tr>
+											<td><input id="item-${user.id}" class="itemcheck" type="checkbox" /></td>
+											<td tal:content="user.id"></td>
+											<td tal:content="user.username"></td>
+											<td tal:content="user.email"></td>
+											<td tal:content="user.datefromtimestamp(dateformat=result.appconfig['timeformat'][0])"></td>
+											<td tal:attributes="class user.activityparams()[0]" tal:content="user.activityparams(activitytime = result.appconfig['activitytime'], dateformat=result.appconfig['timeformat'][0])[1]"></td>
+										</tr>
+										</tal:block>
+									</tbody>
+									<tfoot>
+										<tr>
+           <th></th>
+											<th><!--id-->ид</th>
+           <th><!--username-->Имя</th>
+           <th>email</th>
+											<th><!--created-->Создан</th>
+											<th><!--activity-->Активность</th>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="pages"><div id="pagination"></div><div id="totalpages"></div></div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+	</div>
+	
+	<div class="row">
+				<div class="box_c">
+					<div class="box_c_heading cf box_actions">
+						<p>Функции</p>
+					</div>
+					<div class="box_c_content">
+						<div id="tablefunc" class="row">
+							
+							<form id="newform" class="nice validate">
+								<div class="row editsavemenu">
+									<div class="eight columns">
+										<div class="opheader"><h5>Новое</h5></div><div class="opstatus"></div>
+									</div>
+									<div class="four columns">
+										<div class="gh_button-group">
+											<a href="javascript: void(0);" id="newitem" class="gh_button primary pill">Сохранить</a>
+											<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Системное имя пользователя:</label>
+										  <input type="text" id="setusername" name="setusername" value="" class="input-text medium" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Это имя под которым пользователь входит на сайт. Должно быть уникальным и содержать не менее 3-х и не более 12 символов.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Полное имя пользователя:</label>
+										  <input type="text" id="setfullname" name="setfullname" value="" class="input-text medium" />
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Это имя пользователя. В свободной форме, но содержать не менее 3-х и не более 12 символов.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Электронная почта:</label>
+										 <input type="text" id="setemail" name="setemail" value="" class="input-text medium" />
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Электронная почта должны быть уникальна и содержать правильный адрес электронной почты.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div id="changepassword" class="formRow">
+										 <a href="javascript: void(0);">Изменить пароль?</a>
+									</div>
+									<span id="ifchangepassword">
+									 <div class="formRow elVal">
+										  <div class="row">
+											  <div class="three columns">
+											   <label for="nice_text_medium">Пароль:</label>
+										    <input type="password" name="setpassword" id="setpassword" value="" class="input-text medium" />
+											  </div>
+													<div class="five columns">
+														<a id="generatepassword" href="javascript: void(0);">Сгенерировать пароль:</a>
+													</div>
+											 </div>
+									 </div>
+									 <div class="formRow elVal">
+											<div class="row">
+											 <div style="float:left;">
+										   <label for="nice_text_medium">Пароль ещё раз:</label>
+										   <input type="password" name="setpasswordconfirm" id="setpasswordconfirm" value="" class="input-text medium" />
+											 </div>
+												<div class="ttipform">
+													<span class="ttip_r" title="Пароль должен содержать не меньше 5 символов и не больше 12.">
+													 <img src="img/ico/icSw2/16-Info-_-About.png" />
+												 </span>
+												</div>
+											</div>
+									 </div>
+									</span>
+									
+									<div class="formRow elVal">
+									<div class="row">
+										<div class="imagestargets">
+										 <label for="nice_text_medium" style="float: left; clear: both;">Изображение аватара:</label>
+											<span id="target1">
+												<a href="${stpath + 'users/default/avatars/size1.jpg'}"  class="colorboxfullumg" title="">
+													<img src="${stpath + 'users/default/avatars/size1.jpg'}" />
+											 </a>
+											</span>
+											<span id="target2">
+												<img src="${stpath + 'users/default/avatars/size2.jpg'}" />
+											</span>
+											<span id="target3">
+											 <img src="${stpath + 'users/default/avatars/size3.jpg'}" />
+											</span>
+										</div>
+										
+										<div class="newimage">
+											<a href="/ajaxuploadimg/index/cmauiimport/avatar/1/300/300" rel="content-800-550"  class="colorboxuploadavatar" >Загрузить новое изображение</a>
+										</div>
+									</div>
+									</div>
+									
+								</div>
+							 <div class="four columns">
+									<label class="sepH_b">Список ролей:</label>
+											<select id="setroles" data-placeholder="Список доступных ролей" style="width:300px;" class="chzn-select" multiple tabindex="6">
+												<tal:block repeat="role result.roles">
+													<option tal:attributes="value role[0]" tal:content="role[1]"></option>
+												</tal:block>
+											</select>
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="0" />
+							</form>
+							
+						</div>
+					</div>
+				</div>
+	</div>
+ 
+</div>
+																												
+</html>

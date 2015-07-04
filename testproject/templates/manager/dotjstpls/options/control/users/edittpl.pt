@@ -1,0 +1,119 @@
+<form id="editform" class="nice validate">
+				<div class="row editsavemenu">
+					<div class="eight columns">
+						<div class="opheader">
+							<h5>Редактировать</h5>
+						</div>
+						<div class="opstatus"></div>
+					</div>
+					<div class="four columns">
+						<div class="gh_button-group">
+							<a href="javascript: void(0);" id="saveitem" class="gh_button primary pill">Сохранить</a>
+							<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="eight columns">
+						<div class="formRow elVal">
+							<div class="row">
+								<div style="float:left;">
+									<label for="nice_text_medium">Системное имя пользователя:</label>
+									<input type="text" id="setusername" name="setusername" value="{{=it.username}}" class="input-text medium" />
+								</div>
+								<div class="ttipform">
+									<span class="ttip_r" title="Это имя под которым пользователь входит на сайт. Должно быть уникальным и содержать не менее 3-х и не более 12 символов.">
+										<img src="img/ico/icSw2/16-Info-_-About.png" />
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="formRow elVal">
+							<div class="row">
+								<div style="float:left;">
+									<label for="nice_text_medium">Полное имя пользователя:</label>
+									<input type="text" id="setfullname" name="setfullname" value="{{=it.fullname}}" class="input-text medium" />
+								</div>
+								<div class="ttipform">
+									<span class="ttip_r" title="Это имя пользователя. В свободной форме, но содержать не менее 3-х и не более 12 символов.">
+										<img src="img/ico/icSw2/16-Info-_-About.png" />
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="formRow elVal">
+							<div class="row">
+								<div style="float:left;">
+									<label for="nice_text_medium">Электронная почта:</label>
+									<input type="text" id="setemail" name="setemail" value="{{=it.email}}" class="input-text medium" />
+								</div>
+								<div class="ttipform">
+									<span class="ttip_r" title="Электронная почта должны быть уникальна и содержать правильный адрес электронной почты.">
+										<img src="img/ico/icSw2/16-Info-_-About.png" />
+									</span>
+								</div>
+							</div>
+						</div>
+						<div id="changepassword" class="formRow">
+							<a href="javascript: void(0);">Изменить пароль?</a>
+						</div>
+						<span id="ifchangepassword">
+							<div class="formRow elVal">
+								<div class="row">
+									<div class="three columns">
+										<label for="nice_text_medium">Пароль:</label>
+										<input type="password" id="setpassword" name="setpassword" value="" class="input-text medium" />
+									</div>
+									<div class="five columns">
+										<a id="generatepassword" href="javascript: void(0);">Сгенерировать пароль:</a>
+									</div>
+								</div>
+							</div>
+							<div class="formRow elVal">
+								<div class="row">
+									<div style="float:left;">
+										<label for="nice_text_medium">Пароль ещё раз:</label>
+										<input type="password" id="setpasswordconfirm" name="setpasswordconfirm" value="" class="input-text medium" />
+									</div>
+									<div class="ttipform">
+										<span class="ttip_r" title="Пароль должен содержать не меньше 5 символов и не больше 12.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+								</div>
+							</div>
+						</span>
+						
+						<div class="formRow elVal">
+									<div class="row">
+										<div class="imagestargets">
+										 <label for="nice_text_medium" style="float: left; clear: both;">Изображение аватара:</label>
+											<span id="target1">
+												<a href="{{=it.avatarsfolder}}{{=it.avatar1}}" rel="single"  class="pirobox" title="">
+													<img src="{{=it.avatarsfolder}}{{=it.avatar1}}" />
+											 </a>
+											</span>
+											<span id="target2">
+												<img src="{{=it.avatarsfolder}}{{=it.avatar2}}" />
+											</span>
+											<span id="target3">
+											 <img src="{{=it.avatarsfolder}}{{=it.avatar3}}" />
+											</span>
+										</div>
+										
+										<div class="newimage">
+											<a href="/ajaxuploadimg/index/cmauiimport/avatar/1/300/300" rel="content-800-550"  class="pirobox_gall1" >Загрузить новое изображение</a>
+										</div>
+									</div>
+								</div>
+						
+					</div>
+					<div class="four columns">
+						<label class="sepH_b">Список ролей:</label>
+						<select id="setroles" data-placeholder="Список доступных ролей" style="width:300px;" class="chzn-select" multiple tabindex="6">
+							{{=it.htmlroles}}
+						</select>
+					</div>
+				</div>
+				<input type="hidden" id="edititemid" value="{{=it.id}}" />
+</form>

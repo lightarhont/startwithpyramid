@@ -1,0 +1,56 @@
+<!--Сообщения ArcticModal-->
+<div class="dotjs-comments-arcticmodalmsgtpl">
+    <div class="box-modal" id="box-modal">
+        <div class="box-modal_close arcticmodal-close">закрыть</div>
+        <div class="message-box-modal">{{=it.resultopt}}<div>{{=it.msg}}</div>
+    </div>
+</div>
+    
+<div class="dotjs-comments-arcticmodalmsgtpl2">
+    <div class="box-modal" id="delete-box-modal">
+        <div class="title-delete-box-modal">Комментарий будет удалён безвозвратно, продолжить?</div>
+        <div class="buttons-delete-box-modal">
+            <div class="yes-button">
+                <a class="button secondary small radius"  onclick="deletecomment({{=it.id}})">
+                    
+                                Да
+
+                </a>
+            </div>
+            <div class="no-button">
+                <a class="button secondary small radius"  onclick="closearctic()">
+                                Отмена
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Кнопки -->
+<div class="dotjs-comments-addcommentbutton">
+    <a class="button secondary small radius" onclick="submitajax({{=it.operand}})">Оставить комментарий</a>
+</div>
+
+<div class="dotjs-comments-editcommentbutton">
+    <div style="float: right;">
+        <a class="button secondary small radius" onclick="submitajax({{=it.operand2}})">Отредактировать</a>
+    </div>
+    <div style="margin-right:10px; float: right;">
+        <a class="button secondary small radius" onclick="submitajax({{=it.operand}})">Отмена</a>
+    </div>
+</div>
+
+<!-- Цитата -->
+<div class="dotjs-comments-quotecommenttpl">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i>{{=it.usercomment}}&nbsp;[{{=it.datecomment}}]&nbsp;пишет:</i>
+    <br />
+    <br />
+    {{=it.titlecomment}}
+    <br />
+    {{=it.bodycomment}}
+</div>
+
+<!-- Шаблон комментария -->
+
+

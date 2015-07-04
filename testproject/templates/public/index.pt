@@ -1,0 +1,58 @@
+<html metal:use-macro="load: common/html/all.pt">
+ <div class="contentimport" metal:fill-slot="content">
+  
+  <script type="text/template" id="userpanel">
+   <div class="large-12 large-centered columns" style="max-width: 1050px;">
+     <div style="float: right;">
+   <p>Вы авторизированы как <%= username %> <a onclick="return link('/user/profile');" href="/#!user/profile">[Редактировать профиль]</a> <a onclick="return link('/logout');" href="/#!logout">[Выход]</a></p>
+    </div>
+    </div>
+  </script>
+  
+  <script type="text/template" id="auth">
+    <div class="large-12 large-centered columns" style="max-width: 1050px;">
+     <div style="float: right;">
+   <p>Вы не <a onclick="return link('/login');" href="/#!login">[Вошли]</a>. Если у вас нет аккаунта то нужно пройти <a onclick="return link('/registration');" href="/#!registration">[Регистрацию]</a>.</p>
+    </div>
+    </div>
+  </script>
+  
+  <script type="text/template" id="mainmenu">
+            <div class="row mainmenu">
+                <ul>
+                <li>
+                    <a onclick="return link('/');" href="/">Главная</a>
+                </li>
+                <li>
+                    <a onclick="return link('/blogs');" href="/#!blogs">Блог</a>
+                </li>
+                <li>
+                    <a onclick="return link('/contacts');" href="/#!contacts">Контакты</a>
+                </li>
+                <!--<li>
+                    <a href="#">Mobiles</a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">Options Panel »</a>
+                    <ul>
+                        <li>
+                            <a href="#">General Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Styling Options</a>
+                        </li>
+                        <li>
+                            <a href="#">Single Post</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                </ul>
+            </div>
+  </script>
+  
+  <div id="lwr"></div>
+  <div id="mwr" style="display: none"></div>
+  
+ </div>
+</html>

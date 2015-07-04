@@ -1,0 +1,9 @@
+<html metal:use-macro="load: common/html/all.pt">
+ <div class="contentimport" metal:fill-slot="content">
+  This importing!
+  
+  <tal:block tal:define="usecomments load: testproject:templates/lib/comments/usecomments.pt" metal:use-macro="usecomments">
+  </tal:block>
+  
+ </div>
+</html>

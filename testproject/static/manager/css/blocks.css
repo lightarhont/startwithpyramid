@@ -1,0 +1,222 @@
+#loader1
+		{
+			width: 100%;
+			text-align: center;
+			padding-top: 250px;
+			padding-bottom: 250px;
+			display: none;
+		}
+		
+		#cdt
+		{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		#cdt th
+		{
+			background-color: #e0e0e0;
+			font-weight: bold;
+			padding-bottom: 5px;
+			padding-top: 5px;
+			border: #cccccc 1px solid;
+			background-image: url(../lib/datatables/images/sort_both.gif);
+			background-repeat: no-repeat;
+			background-position: right center;
+			cursor: pointer;
+		}
+		
+		#cdt th:first-child
+		{
+			background-image: none !important;
+			cursor: default !important;
+			width: 50px;
+		}
+		
+		#cdt th:nth-child(2)
+		{
+			background-image: url(../lib/datatables/images/sort_desc.gif);
+			width: 50px;
+		}
+		
+		#cdt th:nth-child(3)
+		{
+			width: 125px;
+		}
+		
+  #cdt th:nth-child(4)
+		{
+			width: 125px;
+		}
+  
+  #cdt th:nth-child(5)
+		{
+			width: 126px;
+		}
+  
+		#cdt td:nth-child(1)
+		{
+			text-align: center;
+		}
+		
+		#cdt td:nth-child(2)
+		{
+			text-align: center;
+		}
+		
+		#cdt td:nth-child(3)
+		{
+			cursor: pointer;
+		}
+		
+		#cdt td
+		{
+			padding-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			padding-right: 5px;
+			border: #cccccc 1px solid;
+		}
+		
+		#cdt tbody tr:nth-child(even)
+		{
+			background-color: #f5f5f5;
+		}
+		
+		#cdt tbody tr:hover
+		{
+			background-color: #e0e0e0;
+		}
+  
+  div.pages
+		{
+			float: left;
+			clear: both;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		
+		#pagination
+		{
+			margin-left: 50px;
+			text-align: left;
+			float: left;
+		}
+		
+		#totalpages
+		{
+			float: left;
+			margin-left: 30px;
+			padding-top: 1px;
+		}
+		
+		div.pages a.page
+		{
+			border: solid 1px #dcdcdc;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-left: 5px;
+			font-size: 12px;
+			text-decoration: none;
+			color: black;
+		}
+		
+		#pagination p
+		{
+			display: inline;
+		}
+		
+		div.pages a.page:hover
+		{
+			background-color: #e6e6e6;
+		}
+		
+		div.pages p.page
+		{
+			border: solid 1px #dcdcdc;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-left: 5px;
+			font-size: 12px;
+			background-color: #e6e6e6;
+		}
+		
+		div.pages a.next, div.pages a.previous, div.pages a.first, div.pages a.last
+		{
+			border: solid 1px #dcdcdc;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-left: 5px;
+			font-size: 12px;
+			text-decoration: none;
+			color: black;
+		}
+		
+		div.pages p.next, div.pages p.previous, div.pages p.first, div.pages p.last
+		{
+			border: solid 1px #dcdcdc;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-left: 5px;
+			font-size: 12px;
+			color: #dcdcdc;
+		}
+  
+  div.editsavemenu
+		{
+			background-color: #058dc7;
+			margin-top: 20px;
+			margin-bottom: 25px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		
+  div.textareasize textarea
+  {
+    width: 250px;
+    height: 75px;
+  }
+  
+		div.ttipform
+		{
+			float:left;
+			margin-left: 15px;
+			margin-top: 25px;
+		}
+		
+		div.opheader
+		{
+			float: left;
+			margin-left: 20px;
+		}
+		
+		div.opheader h5
+		{
+			color: white;
+		}
+		
+		div.opstatus
+		{
+			float: left;
+			color: yellow;
+			margin-left: 20px;
+			margin-top: 4px;
+		}
+  
+  td.blockact
+  {
+    background-color: lightgreen;
+  }
+  
+  td.blocknoact
+  {
+				background-color: lightgrey;
+  }

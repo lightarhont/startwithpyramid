@@ -1,0 +1,11 @@
+<table>
+    <tr>
+        <td><input id="item-{{=it[0]}}" class="itemcheck" type="checkbox" /></td>
+        <td>{{=it[0]}}</td>
+        <td>{{=it[1]}}</td>
+        <td>{{=it[2]}}</td>
+        <td>{{=it[3]}}</td>
+        <td class="{{=it[4][0]}}">{{=it[4][1]}}</td>
+        <td class="{{=it[5][0]}}">{{=it[5][1]}}</td>
+    </tr>
+</table>

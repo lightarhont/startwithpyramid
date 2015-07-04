@@ -1,0 +1,113 @@
+/*
+#messagertimer {
+display:none;
+}
+*/
+
+/*
+div.comments {
+    width: 100% !important;
+}
+*/
+
+div.info {
+    font-size: 13px;
+    color: darkgrey;
+    border-bottom: #d8d8d8 solid 1px;
+    margin-bottom: 5px !important;
+}
+
+div.info a {
+    font-size: 13px;
+    color: darkgrey !important;
+}
+
+div.info a:hover {
+    text-decoration: underline;
+    color: black !important;
+}
+
+div.info .itemid {
+    float: left;
+    padding-left: 2px;
+    width: 25px;
+}
+
+div.info .username {
+    float: left;
+    width: 45px;
+}
+
+div.info .datetime {
+    float: left;
+    width: 140px;
+}
+
+div.info div.option1 {
+    float: right;
+    width: 70px;
+}
+
+div.info div.option2 {
+    float: right;
+    width: 110px;
+}
+
+div.info div.option3 {
+    float: right;
+    width: 75px;
+}
+
+div.partinfo {
+    float: left;
+}
+
+div.partdata {
+    float: left;
+}
+
+div.comment div.titlecomment {
+    float: left;
+    clear: both;
+    width: 450px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+div.comment div.bodycomment {
+    float: left;
+    clear: both;
+    width: 450px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+div.comment div.editedcomments {
+    float: left;
+    clear: both;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 11px;
+    color: darkgrey;
+}
+
+div.comment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px !important;
+}
+
+div.showhidecomments > div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*
+ul.pagination .current a {
+    background-color: black !important;
+}*/

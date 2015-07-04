@@ -1,0 +1,26 @@
+var cmfilterclear = (function(){
+                       $('#tablesearchclear').click(function(){
+                       $("#fieldtablesearch").val('')
+                       
+                       delete sort.lke;
+                       delete sort.phr;
+                       
+                       url = preurl + 'count';
+                       
+                       $('#loader1').show();
+                       
+                       $.ajax({
+                             "async": false,
+                             "url": url,
+                             "success": function(data)
+                             {
+                              paging.setNumber(data.number);
+                              number = data.number;
+                              cmtotalpages();
+                              paging.setOptions({refresh: {'url': preurl + 'count', 'interval': 300}});
+                              paging.setPage();
+                              $('#loader1').hide();
+                             }
+                        });
+                      });
+                      });

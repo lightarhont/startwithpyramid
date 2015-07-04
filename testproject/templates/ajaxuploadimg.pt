@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="${stpath + 'public/lib/aui/aui.css'}" type="text/css" />
+<script src="${stpath + 'public/lib/jcrop/jquery.jcrop.min.js'}"> </script>
+<link rel="stylesheet" href="${stpath + 'public/lib/jcrop/jquery.jcrop.css'}" type="text/css" />
+ <!--<script type="text/javascript" src="http://testproject.python/static/manager/js/jquery.min.js"></script>-->
+
+ <script type="text/javascript">
+  
+  var aui_importimgtarget = '${structure: id}';
+  var aui_importfunc = '${structure: func}';
+  var aui_urlproject = '${structure: url}';
+  var aui_crop = '${structure: crop}'
+  var aui_staticfiles = '${structure: staticfiles}'
+  var aui_preurl = '${structure: preurl}';
+  var aui_preurlcrop = '${structure: preurlcrop}';
+  var aui_width = '${structure: width}';
+  var aui_height = '${structure: height}';
+  
+  var aui_minwidth = 585;
+  var aui_imgstatus = 0;
+  
+  function auiclearmodule()
+  {
+   importimg = undefined;
+   cropimg = undefined;
+   updateCoords = undefined;
+   processcrop = undefined;
+   checkCoords = undefined;
+   onResponse = undefined;
+   
+   aui_importimgtarget = undefined;
+   aui_importfunc = undefined;
+   aui_urlproject = undefined;
+   aui_crop = undefined;
+   aui_staticfiles = undefined;
+   aui_preurl = undefined;
+   aui_preurlcrop = undefined;
+   aui_width = undefined;
+   aui_height = undefined;
+   aui_imgstatus = undefined;
+  }
+  
+  if(!window.jQuery) {
+    document.location.href = aui_urlproject;
+  }
+  
+  function importimg()
+  {
+   var src;
+   src = $('img.importimg').attr('src');
+   data = {'target': aui_importimgtarget, 'status': aui_imgstatus, 'image': src};
+   eval(aui_importfunc + '(data);');
+   $.colorbox.close()
+  }
+  
+  function cropimg()
+  {
+    $('#cropbox').Jcrop({
+      aspectRatio: aui_width/aui_height,
+      onSelect: updateCoords
+    });
+  }
+
+  function updateCoords(c)
+  {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+  };
+  
+  function processcrop()
+  { 
+    sizes = new Object();
+    
+    sizes.x = $('#x').val();
+    sizes.y = $('#y').val();
+    sizes.w = $('#w').val();
+    sizes.h = $('#h').val();
+    sizes.image = $('#uploadimg').val();
+    
+    $.ajax({
+        type: "POST",
+        url: "/ajaxuploadimg/crop/" + aui_width + "/" + aui_height,
+        data: sizes,
+        cache: false,
+        async: false,
+        success: function(msg){
+            $('#preview').html('<div class="cropzone" style="width:'+ aui_width +'px;"><img class="importimg" src="'+ aui_urlproject + aui_staticfiles + aui_preurlcrop + msg + '" /></div>');
+            $('.cutcrop').hide();
+            aui_imgstatus = 2;
+            },
+        error: function (XMLHttpRequest, textStatus, errorThrown) { alert('Ошибка загрузки запроса'); }
+        });
+  }
+
+  function checkCoords()
+  {
+    if (parseInt($('#w').val()))
+    {
+     processcrop();
+    }
+    else
+    {
+     alert('Выберите область перед тем как продолжить!');
+    }
+  };
+  
+  function onResponse(d) {
+   eval('var obj = ' + d + ';');
+   $('#preview').html('<div class="cropzone" style="width:'+ obj.width +'px;"><img class="importimg" id="cropbox" src="'+ aui_urlproject + aui_staticfiles + aui_preurl + obj.filename + '" /><input type="hidden" id="x" name="x" /><input type="hidden" id="y" name="y" /><input type="hidden" id="w" name="w" /><input type="hidden" id="h" name="h" /><input type="hidden" id="uploadimg" name="image" value="' + obj.filename +'" /><input type="hidden" name="saveicon" value="1" />');
+   $('.importimg').load(showResponse(obj));
+   var importimg = '<button class="more" onclick="importimg();">Сохранить</button>';
+   if (aui_crop == '1') {
+    var cutcrop = '<button onclick="return checkCoords();" class="cutcrop more">Вырезать иконку</button>';
+    importimg = cutcrop + importimg;
+    aui_imgstatus = 1;
+   }
+   $('#importimg').html(importimg);
+  }
+  
+  function showResponse(obj) {
+   var y = 550;
+    var width = 0;
+    if(obj.width >= aui_minwidth){
+     width = Number(obj.width)+70;
+    }
+    else {
+     width = aui_minwidth+70;
+    }
+    $.colorbox.resize({width: width, height:y}, cropimg);
+  }
+  
+ </script>
+<div id="mainframe">
+ <iframe id="rFrame" name="rFrame" style="display: none">  
+ </iframe>  
+ <div class="formupload">
+  <div class="formuploadtitle">Выберите файл для загрузки:</div>
+  <div style="float: left;">
+   <form action="/ajaxuploadimg/handler" target="rFrame" method="POST" enctype="multipart/form-data">  
+    <input type="file" onChange="this.form.submit()" name="loadfile" accept="gif|jpg|png|jpeg" />
+    <input name="MAX_FILE_SIZE" value="2097152" type="hidden"/>
+   </form>
+  </div>
+  <div id="importimg"></div>
+  <div class="loadimginfo">Допускается загрузка изображения формата <strong>gif jpg png jpeg</strong> размером не более <strong>2мб</strong>!</div>
+ </div>
+ <div id="preview">
+ 
+ </div>
+</div>

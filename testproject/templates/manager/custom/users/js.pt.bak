@@ -1,0 +1,111 @@
+
+//генерация случайного числа
+${structure: rand}
+
+//генерация случайной строки 8 символов
+${structure: generate}
+
+//Выбрать всё в таблице
+${structure: checkall}
+
+//Рендерит количество страниц
+${structure: totalpages}
+
+//Педжинатор таблицы
+${structure: paging}
+
+//Фильтр
+${structure: filter}
+
+//Очистка фильтра
+${structure: filterclear}
+
+//Сортировка
+${structure: orderby}
+
+
+var cmgeneratepassword = (function(){
+                    $('#generatepassword').click(function(){
+                       var password = cmgenerate(8);
+                       $('#setpassword').val(password);
+                       $('#setpasswordconfirm').val(password);
+                       alert('Пароль сгенерирован, запишите его: ' + password);
+                      });
+    });
+
+var cmchangepassword = (function(){
+                       $('#changepassword a').click(function(){
+                       $('#changepassword').css('display', 'none');
+                       $('#ifchangepassword').css('display', 'block');
+                      });
+    });
+
+var cmtablefunc = (function()
+                   {
+                    //по событию на каждое поле
+                    $('#cdt tbody td:nth-child(3)').click(function(){
+                     cmedititem(this);
+                    });
+                    }
+                    );
+
+var cmtbody = (function(obj)
+               {
+                var result = '';
+                result += '<tr>';
+                result += '<td><input id="item-'+obj[0]+'" class="itemcheck" type="checkbox" /></td>';
+                result += '<td>'+obj[0]+'</td>';
+                result += '<td>'+obj[1]+'</td>';
+                result += '<td>'+obj[2]+'</td>';
+                result += '</tr>';
+                return result;
+               }
+               );
+
+var cmedititem = (function(curr)
+                  {
+                        var parent = $(curr).parent();
+                        var input = parent.children('td:nth-child(1)').children();
+                        item = $(input).attr('id').split('-')[1];
+                        
+                        url = preurl + 'loaditem/'+ item
+                         
+                        $.ajax({
+                             "async": false,
+                             "url": url,
+                             "success": function(data)
+                             {
+                             $('#tablefunc').html(cmedititemrender(data));
+                             }
+                             });
+                        cmchangepassword();
+                        cmgeneratepassword();
+                        prth_chosen_select.init();
+                  }
+                 );
+
+var cmedititemrender = (function(data)
+                        {
+                         var result = '<form class="nice"><div class="eight columns"><div class="formRow">';
+                         result += result.concat(
+'<label for="nice_text_medium">Системное имя пользователя:</label>',
+'<input type="text" id="setusername" value="'+ data.username +'" class="input-text medium" />',
+'</div><div class="formRow"><label for="nice_text_medium">Полное имя пользователя:</label>',
+'<input type="text" id="setfullname" value="'+ data.fullname +'" class="input-text medium" />',
+'</div><div class="formRow"><label for="nice_text_medium">Электронная почта:</label>',
+'<input type="text" id="setemail" value="'+ data.email +'" class="input-text medium" />',
+'</div><div id="changepassword" class="formRow"><a href="javascript: void(0);">Изменить пароль?</a></div>',
+'<span id="ifchangepassword"><div class="formRow"><div class="row"><div class="three columns">',
+'<label for="nice_text_medium">Пароль:</label><input type="password" id="setpassword" value="" class="input-text medium" />',
+'</div><div class="five columns"><a id="generatepassword" href="javascript: void(0);">Сгенерировать пароль:</a>',
+'</div></div></div><div class="formRow"><label for="nice_text_medium">Пароль ещё раз:</label>',
+'<input type="password" id="setpasswordconfirm" value="" class="input-text medium" /></div></span></div>',
+'<div class="four columns"><label class="sepH_b">Список ролей:</label>',
+'<select id="setroles" data-placeholder="Your Favorite Football Team" style="width:300px;" class="chzn-select" multiple tabindex="6">',
+'<option value=""></option><optgroup label="NFC EAST"><option>Dallas Cowboys</option><option>New York Giants</option><option>Philadelphia Eagles</option><option>Washington Redskins</option></optgroup><optgroup label="NFC NORTH"><option>Chicago Bears</option><option>Detroit Lions</option><option>Green Bay Packers</option><option>Minnesota Vikings</option></optgroup><optgroup label="NFC SOUTH"><option>Atlanta Falcons</option><option>Carolina Panthers</option><option>New Orleans Saints</option><option>Tampa Bay Buccaneers</option></optgroup><optgroup label="NFC WEST"><option>Arizona Cardinals</option><option>St. Louis Rams</option><option>San Francisco 49ers</option><option>Seattle Seahawks</option></optgroup><optgroup label="AFC EAST"><option>Buffalo Bills</option><option>Miami Dolphins</option><option>New England Patriots</option><option>New York Jets</option></optgroup><optgroup label="AFC NORTH"><option>Baltimore Ravens</option><option>Cincinnati Bengals</option><option>Cleveland Browns</option><option>Pittsburgh Steelers</option></optgroup><optgroup label="AFC SOUTH"><option>Houston Texans</option><option>Indianapolis Colts</option><option>Jacksonville Jaguars</option><option>Tennessee Titans</option></optgroup><optgroup label="AFC WEST"><option>Denver Broncos</option><option>Kansas City Chiefs</option><option>Oakland Raiders</option><option>San Diego Chargers</option></optgroup>',
+'</select></div></form>'
+                         );
+                         return result;
+                        }
+                      );
+

@@ -1,0 +1,124 @@
+<html metal:use-macro="load: common/html/all.pt">
+ <div class="contentimport" metal:fill-slot="content">
+  
+  <script type="text/template" id="commentform">
+          <form id="adcomment">
+            <fieldset>
+              <legend>Новый комментарий</legend>
+              <div class="row collapse prefix-radius">
+                <div class="large-2 columns">
+                  <label data-tooltip class="prefix has-tip" title="Тема сообщения не обязательна, должна содержать только текст и не должна быть длиннее 64 символа.">Тема:</label>
+                </div>
+                <div class="large-10 columns titlecomment">
+                  <input type="text" name="title" placeholder="Тема вашего сообщения..." />
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="large-12">
+                  <textarea name="comment" id="wbbeditor"></textarea>
+                </div>
+              </div>
+              
+              
+              <div class="row collapse">
+                <div class="large-12 columns">
+                  <ul class="square">
+                   <li><small>Сообщение не должно превышать <%= contentlimit %> символов с тегами. Лишний текст убирается.</small></li>
+                   <li><small>Ограничение в <%= addcommenttimelimit %> секунды при отправке новых комментариев.</small></li>
+                   <% if(premoderation === 1){ %>
+                   <li><small>Премодерация. Новые сообщения становятся видимыми только после проверки модератора/администратора</small></li>
+                   <% } %>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="row collapse right">
+                <div class="large-12 submit-button">
+                  <a class="button secondary small radius" href="javascript: void(0);">
+                    Оставить комментарий
+                  </a>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+  </script>
+  
+  <script type="text/template" id="editbuttons">
+   <div class="edit" style="float: right;">
+        <a class="button secondary small radius">Отредактировать</a>
+    </div>
+    <div class="cancel" style="margin-right:10px; float: right;">
+        <a class="button secondary small radius">Отмена</a>
+    </div>
+  </script>
+  
+  <script type="text/template" id="addbuttons">
+   <a class="button secondary small radius">Оставить комментарий</a>
+  </script>
+  
+  <script type="text/template" id="mytest">
+   
+            <div class="row info">
+                <div class="itemid"><a href="#">#<%= itemid %></a></div>
+                <div class="username"><a id="uc1" href="javascript: void(0);"><%= username %></a></div>
+                <div id="dc1" class="datetime">
+                   <%= fcreated %>
+                </div>
+                
+                    <% if(permcomments == 1) { %>
+                        <div class="option1"><a href="javascript: void(0);">Цитировать</a></div>
+                        <% if(permwrite == 1) { %>
+                            <div class="option2" ><a href="javascript: void(0);">Редактировать</a></div>
+                            <div class="option3"><a href="javascript: void(0);">Удалить</a></div>
+                        <% } %>
+                    <% } %>
+                    
+                    
+                
+            </div>
+            
+            
+                <div class="partinfo">
+                    <img src="http://testproject.python/static/users/<%= userid %>/avatars/100x100.png">
+                </div>
+                <div class="partdata">
+                    <div class="titlecomment" id="tc1"><%= permwrite %>^^<%= title %></div>
+                    <div class="bodycomment" id="bc1"><%= content %></div>
+                    <% if(flast_edited) { %>
+                        <div class="editedcomments">Последние изменение: <%= flast_edited %></div>
+                    <% } %>
+                </div>
+   
+  </script>
+  
+  <script type="text/template" id="deleteyn">
+   <div style="width:360px; float: right;" class="option4">Подвердите удаление комментария: <a class="deletecommentyny" style="color: red !important;" href="javascript: void(0);">Подтвердить</a> | <a class="deletecommentynn" style="color: black !important;" href="javascript: void(0);">Отмена</a></div>
+  </script>
+  
+  <script type="text/template" id="quotecomment">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i><%= username %>&nbsp;[<%= fcreated %>]&nbsp;пишет:</i>
+    <br />
+    <br />
+    <%= title %>
+    <br />
+    <%= content %>
+  </script>
+  
+ <div class="row collapse" style="min-width: 100%; padding-left: 30px;">
+  
+  <div class="adcommentform" style="width:616px;">
+  </div>
+  
+  <div style="width:616px;" class="row showhidecomments">
+   <div class="panel radius showhide"></div>
+  </div>
+  
+  <div class="row collapse comments" style="width:616px;" id="allcomments">
+  </div>
+  
+ </div>
+  
+ </div>
+</html>

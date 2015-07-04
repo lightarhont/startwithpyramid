@@ -1,0 +1,13 @@
+var cmpirobox = (function()
+                 {
+                    $(".piro_html").remove();
+                    $(".piro_overlay").remove();
+                    $(".pirobox_content").remove();
+                    $("#imgCache").remove();
+                    $().piroBox_ext({
+                        piro_speed : 900,
+                        bg_alpha : 0.1,
+                        piro_scroll : true
+                        });
+                 }
+                );

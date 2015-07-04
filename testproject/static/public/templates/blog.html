@@ -1,0 +1,210 @@
+  <script type="text/template" id="blog">
+                        <div class="post large-12">
+                            <div class="row datepart">
+                                <div class="datepartp1">
+                                &#9698
+                                </div>
+                                <div class="datepartp2">
+                                    <%= fcreated %>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="titlepart large-12">
+                                    <h2><%= title %></h2>
+                                </div>
+                            </div>
+                            <div class="row msc">
+                                <div class="small-12 medium-12 large-12">
+                                    Создано: <%= username %>
+                                    <% if(!_.isEmpty(tags)) { %>
+                                    , в тэги:
+                                          <% _.each(tags, function(name) { %>
+                                                               <a onclick="return link('/#!blogs/tag/<%= name %>');" href="/#!blogs/tag/<%= name %>"><%= name %></a>
+                                          <% }); %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <%= content %>
+                            </div>
+                            <% if(comments == 1) { %>
+                            <div class="row collapse commentslayout">
+                             <div class="addcommentform">
+                             </div>
+    
+                             <div class="row showhidecomments">
+                              <div class="panel radius showhide"></div>
+                             </div>
+   
+                             <div class="row collapse comments" id="allcomments"></div>
+                            </div>
+                            <% } %>
+                        </div>
+  </script>
+  
+  <script type="text/template" id="BlogItemsCollection">
+   <div class="row collapse">
+                        <div class="titlepart large-12">
+                            <h1>Блоги</h1>
+                        </div>
+                    </div>
+   <div id="blogitems" class="row collapse">
+   </div>
+                    
+  </script>
+  
+  <script type="text/template" id="BlogItems">
+   
+                            <div class="row datepart">
+                                <div class="datepartp1">
+                                &#9698
+                                </div>
+                                <div class="datepartp2">
+                                    <%= fcreated %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="titlepart large-12">
+                                    <h2><%= title %></h2>
+                                </div>
+                            </div>
+                            <div class="row msc">
+                                <div class="byuser">
+                                    <div class="byusersp"></div>
+                                    <div class="byusertitle">От <%= username %></div>
+                                </div>
+                                <% if(!_.isEmpty(tags)) { %>
+                                <div class="tagspart">
+                                    <div class="tagspartsp"></div>
+                                    <div class="tagsparttags">
+                                          <% _.each(tags, function(name) { %>
+                                                               <a onclick="return link('blogs/tag/<%= name %>');" href="/#!blogs/tag/<%= name %>"><%= name %></a>
+                                          <% }); %>
+                                    </div>
+                                </div>
+                                <% } %>
+                                <% if(comments == 1 && !_.isUndefined(comments_count)) { %>
+                                <div class="countcomment">
+                                    <div class="countcommentsp"></div>
+                                    <div class="countcommentcts">
+                                     <%= comments_count %> Comment
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="small-12 medium-12 large-12">
+                                    <div class="row">
+                                        <%= intro %>                  </div>
+                                    <div style="margin-top: 10px;" class="row right">
+                                        <a onclick="return link('/blog/<%= slug %>');" href="/#!blog/<%= slug %>" class="more">read more</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        
+   
+   <!--
+   <div class="row collapse">
+                        <div class="posts large-12">
+                            <div class="row datepart">
+                                <div class="datepartp1">
+                                &#9698
+                                </div>
+                                <div class="datepartp2">
+                                    17 Apr 2012
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="titlepart large-12">
+                                    <h2>Porttitor Lectus Tincidunt Elementum Nascetur Montes</h2>
+                                </div>
+                            </div>
+                            <div style="position: relative; top: -20px;" class="row">
+                                <div class="byuser">
+                                    <div class="byusersp"></div>
+                                    <div class="byusertitle">By MTS</div>
+                                </div>
+                                <div class="tagspart">
+                                    <div class="tagspartsp"></div>
+                                    <div class="tagsparttags">
+                                        <a href="#">Apple</a>, <a href="#">Google</a>
+                                    </div>
+                                </div>
+                                <div class="countcomment">
+                                    <div class="countcommentsp"></div>
+                                    <div class="countcommentcts">
+                                        0 Comment
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row collapse">
+                                
+                                <div class="small-3 medium-3 large-3 columns">
+                                    <img src="http://demo.mythemeshop.com/ribbon/files/2012/04/5272141300_72d2f1e686-150x150.jpg" />
+                                </div>
+                                <div style="padding-left: 5px;" class="small-9 medium-9 large-9 columns">
+                                    <div class="row">
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla. Sed convallis orci. Duis libero orci, pretium a, convallis quis, pellentesque a, dolor. Curabitur vitae nisi non dolor vestibulum consequat. Nascetur, vel massa enim lundium nec in, phasellus vel nisi nec penatibus? Duis phasellus, ut! Amet risus
+                                    </div>
+                                    <div style="margin-top: 10px;" class="row right">
+                                        <a class="more">read more</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="posts large-12">
+                            <div class="row datepart">
+                                <div class="datepartp1">
+                                &#9698
+                                </div>
+                                <div class="datepartp2">
+                                    17 Apr 2012
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="titlepart large-12">
+                                    <h2>Porttitor Lectus Tincidunt Elementum Nascetur Montes</h2>
+                                </div>
+                            </div>
+                            <div style="position: relative; top: -20px;" class="row">
+                                <div class="byuser">
+                                    <div class="byusersp"></div>
+                                    <div class="byusertitle">By MTS</div>
+                                </div>
+                                <div class="tagspart">
+                                    <div class="tagspartsp"></div>
+                                    <div class="tagsparttags">
+                                        <a href="#">Apple</a>, <a href="#">Google</a>
+                                    </div>
+                                </div>
+                                <div class="countcomment">
+                                    <div class="countcommentsp"></div>
+                                    <div class="countcommentcts">
+                                        0 Comment
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="small-12 medium-12 large-12">
+                                    <div class="row">
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla. Sed convallis orci. Duis libero orci, pretium a, convallis quis, pellentesque a, dolor. Curabitur vitae nisi non dolor vestibulum consequat. Nascetur, vel massa enim lundium nec in, phasellus vel nisi nec penatibus? Duis phasellus, ut! Amet risus
+                                    </div>
+                                    <div style="margin-top: 10px;" class="row right">
+                                        <a href="http://testproject.python/blogs#blog/2" class="more">read more</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>-->
+                        
+                    
+  </script>

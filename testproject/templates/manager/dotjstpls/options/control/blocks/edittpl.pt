@@ -1,0 +1,105 @@
+<form id="editform" class="nice validate">
+								<div class="row editsavemenu">
+									<div class="eight columns">
+										<div class="opheader"><h5>Редактировать</h5></div><div class="opstatus"></div>
+									</div>
+									<div class="four columns">
+										<div class="gh_button-group">
+											<a href="javascript: void(0);" id="saveitem" class="gh_button primary pill">Сохранить</a>
+											<a href="javascript: void(0);" id="restoreitem" class="gh_button pill">Сбросить</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+							 <div class="eight columns">
+									<div class="formRow elVal">
+										<div class="row">
+										 <div style="float:left;">
+											 <label for="nice_text_medium">Имя блокируемого пользователя:</label>
+										  <select id="setblockeduser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+                {{=it.exlusers}}
+            </select>
+											</div>
+											<div class="ttipform">
+												<span class="ttip_r" title="Уникальное имя блокируемого пользователя.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									 <div class="row">
+											<div style="float:left;">
+										  <label for="nice_text_medium">Имя правила для блокировки:</label>
+										  <select id="setruleblock" data-placeholder="Выберите право для блокироки&hellip;" class="chzn-select" style="width:250px;">
+                {{=it.exlpermissons}}
+            </select>
+											</div>
+											<div class="ttipform" style="margin-left: 10px;">
+												<span class="ttip_r" title="Правило для блокировки.">
+													<img src="img/ico/icSw2/16-Info-_-About.png" />
+												</span>
+											</div>
+									 </div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Бан от пользователя:</label>
+										  <select id="setfromuser" data-placeholder="Выберите пользователя&hellip;" class="chzn-select" style="width:250px;">
+                {{=it.allusers}}
+            </select>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Уникальное имя пользователя который создал блокировку.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Дата и время начала блокироки:</label>
+										 <input id="setdatestart" name="setdatestart" type="text" class="input-text small datetime" value="{{=it.fdatestart}}">
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Дата и время начала блокировки.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									<div class="formRow elVal">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Дата и время конца блокироки:</label>
+										 <input id="setdateend" name="setdateend" type="text" class="input-text small datetime" value="{{=it.fdateend}}">
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Дата и время конца блокировки.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+         <div class="formRow elVal textareasize">
+									<div class="row">
+										<div style="float:left;">
+										 <label for="nice_text_medium">Комментарий к блокироке:</label>
+										 <textarea id="setblockcomment" cols="1" rows="3" class="expand">{{=it.comment}}</textarea>
+										</div>
+										<div class="ttipform">
+										<span class="ttip_r" title="Комментарий к блокироке не более 255 символов.">
+											<img src="img/ico/icSw2/16-Info-_-About.png" />
+										</span>
+									</div>
+									</div>
+									</div>
+									
+								</div>
+							 <div class="four columns">
+								</div>
+							 </div>
+								<input type="hidden" id="edititemid" value="{{=it.id}}" />
+</form>

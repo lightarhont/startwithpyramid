@@ -1,0 +1,40 @@
+<script type="text/template" id="toggleblocks">
+        <div class="small-12 medium-12 large-12">
+            <div class="row collapse">
+                <div class="panel1p11 small-6 medium-6 large-6 columns">
+                    <div>Тэги</div>
+                </div>
+                <div class="panel1p12 small-6 medium-6 large-6 columns">
+                    <div>Популярное</div>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div class="panel1p2 small-12 medium-12 large-12">
+                </div>
+            </div>
+        </div>
+</script>
+
+<script type="text/template" id="tagsblock">
+    <div class="row">
+        <div class="small-12 medium-12 large-12">
+            <ul>
+            <% _.each(items, function(item) { %>
+                <li><a onclick="return link('/blogs/tag/<%= item.name %>');" href="/#!blogs/tag/<%= item.name %>"><%= item.name %></a></li>
+            <% }); %>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="popularsblock">
+    <div class="row">
+        <div class="small-12 medium-12 large-12">
+            <ul>
+            <% _.each(items, function(item) { %>
+                <li><a onclick="return link('/blog/<%= item.slug %>');" href="/#!blog/<%= item.slug %>"><%= item.title %></a></li>
+            <% }); %>    
+            </ul>
+        </div>
+    </div>
+</script>

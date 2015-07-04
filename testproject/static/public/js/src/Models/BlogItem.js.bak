@@ -1,0 +1,14 @@
+define(function(){
+    
+Project.Classes.Models.BlogItem = Backbone.Model.extend({
+    defaults: {notfound: 0},
+    urlRoot: function(){
+        var slug = this.escape('slug');
+        var url = pfx+'blogs/blog/'+slug;
+        return url;
+    }
+});
+    
+return Project;
+
+});

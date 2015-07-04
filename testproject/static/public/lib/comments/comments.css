@@ -1,0 +1,270 @@
+@charset "utf-8";
+div.comment {
+float:left;
+clear:both;
+width:600px;
+border:1px #999999 solid;
+padding-left:10px;
+padding-right:10px;
+padding-bottom:5px;
+padding-top:5px;
+background-color:#f2f2f2;
+margin-bottom:10px;
+}
+
+div.comment div.info {
+float:left;
+clear:both;
+padding-bottom:3px;
+width:600px;
+border-bottom:solid 1px #000000;
+}
+
+div.comment div.itemid {
+float:left;
+margin-right:5px;
+}
+
+div.comment div.username {
+float:left;
+font-weight:bold;
+background-image:url(/public/images/comments/user_16.png);
+background-repeat:no-repeat;
+padding-left:20px;
+font-size:11px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+margin-right:5px;
+}
+
+div.comment div.datetime {
+float:left;
+background-image:url(/public/images/comments/cal_16.png);
+background-repeat:no-repeat;
+padding-left:20px;
+font-size:11px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+}
+
+div.comment div.option1, div.comment div.option2, div.comment div.option3 {
+float:right;
+margin-left:5px;
+}
+
+div.info a {
+font-size:11px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+color:#990000;
+text-decoration:none;
+}
+
+div.info a:hover {
+text-decoration:underline;
+}
+
+div.comment div.titlecomment {
+font-weight:bold;
+font-size:13px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+float:left;
+clear:both;
+}
+
+div.comment div.bodycomment {
+font-size:13px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+float:left;
+clear:both;
+}
+
+#allcomments {
+float:left;
+clear:both;
+}
+
+div.pagination {
+float:left;
+clear:both;
+margin-bottom:10px;
+}
+
+div.pagination a, div.pagination div {
+float:left;
+padding-top:2px;
+padding-left:5px;
+padding-bottom:2px;
+padding-right:5px;
+border:solid 1px #dddddd;
+margin-right:5px;
+background-color:#f2f2f2;
+color:#cc0000;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bold;
+font-size:12px;
+text-decoration:none;
+}
+
+div.pagination a:hover {
+border:solid 1px #990000;
+}
+
+div.pagination div {
+background-color:#666666;
+color:#FFFFFF;
+}
+
+#hiddencomponentid {
+display:none;
+}
+
+/* Форма добавления/редактирования */
+
+div.commentingform {
+float:left;
+margin-top:20px;
+margin-bottom:20px;
+}
+
+div.btn1 {
+padding-left:7px;
+background-image:url(/public/images/form/b1.gif);
+background-repeat:no-repeat;
+cursor:pointer;
+}
+
+div.btn2 {
+background-image:url(/public/images/form/b2.gif);
+background-repeat:no-repeat;
+background-position:right;
+padding-right:7px;
+}
+
+div.btn3 {
+background-image:url(/public/images/form/t3.gif);
+background-repeat:repeat-x;
+background-color:#f0f0f0;
+}
+
+div.btn4 {
+height:28px;
+background-image:url(/public/images/form/t3.gif);
+background-repeat:repeat-x;
+background-position:bottom;
+font-family:Arial, Helvetica, sans-serif;
+font-size:16px;
+font-weight:bold;
+padding-left:8px;
+padding-right:8px;
+padding-top:8px;
+}
+
+div.submit-button {
+float:right;
+clear:both;
+margin-right:5px;
+}
+
+#adcomment label {
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+float:left;
+margin-right:20px;
+padding-top:2px;
+}
+
+#adcomment div.titlecomment {
+float:left;
+clear:both;
+margin-bottom:10px;
+}
+
+#adcomment div.bodycomment {
+float:left;
+clear:both;
+margin-bottom:10px;
+width:618px;
+}
+
+#adcomment input {
+border:#dddddd 1px solid;
+float:left;
+width:558px;
+}
+
+#messagertimer {
+display:none;
+font-family:Arial, Helvetica, sans-serif;
+font-size:16px;
+font-weight:bold;
+text-align:center;
+padding-top:35px;
+background-image:url(/public/images/comments/timer_32.png);
+background-repeat:no-repeat;
+background-position:center top;
+margin-top:10px;
+margin-bottom:10px;
+}
+
+/* Модальное окна */
+
+#delete-box-modal {
+float:left;
+height:80px;
+}
+
+div.title-delete-box-modal {
+float:left;
+width:100%;
+text-align:center;
+clear:both;
+font-family:Arial, Helvetica, sans-serif;
+font-size:16px;
+font-weight:bold;
+}
+
+div.buttons-delete-box-modal {
+float:left;
+clear:both;
+border-top:#000000 solid 1px;
+width:100%;
+margin-top:10px;
+padding-top:10px;
+}
+
+div.buttons-delete-box-modal div.yes-button {
+float:left;
+margin-right:10px;
+margin-left:20px;
+}
+
+div.buttons-delete-box-modal div.no-button {
+float:left;
+}
+
+#result {
+display:none;
+}
+
+#box-modal {
+float:left;
+min-height:40px;
+}
+
+div.message-box-modal {
+float:left;
+clear:both;
+}
+
+div.message-box-modal div {
+float:left;
+font-family:Arial, Helvetica, sans-serif;
+font-size:16px;
+font-weight:bold;
+}
+
+div.message-box-modal div.success {
+color:#006600;
+}
+
+div.message-box-modal div.error {
+color:#FF0000;
+}
